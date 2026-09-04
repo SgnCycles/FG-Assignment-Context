@@ -3,3 +3,34 @@
 * {
   box-sizing: border-box;
 }
+
+@theme {
+  --font-fugaz-one: var(--font-fugaz-one);
+  --font-work-sans: var(--font-work-sans);
+  --color-background: #fff0dc;
+  --color-heading: #164e30;
+  --color-input: #f0f0f0;
+  --color-primary: #095332;
+  --color-secondary: #f73333;
+}
+
+.input-container {
+  @apply relative flex p-5 justify-start bg-input border-4 border-primary gap-4 max-h-17.5 shadow-[5px_5px_var(--color-primary)] min-w-87.5 rounded-[20px];
+}
+
+.input {
+  @apply ml-auto w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332] focus:translate-x-1.25 focus:-translate-y-1.25 focus:translate-z-5;
+}
+
+.label {
+  @apply absolute top-3.75 -left-10 bg-[#e9b50b] text-black font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-black rounded-[20px] tracking-widest;
+}
+
+.grid-children {
+  @apply w-full h-full;
+}
+
+.homepage-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}

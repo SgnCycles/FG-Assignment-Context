@@ -28,26 +28,35 @@ const Login = () => {
   };
 
   return (
-    <form>
-      <h2>Login:</h2>
-      <label htmlFor="username">Username:</label>
-      <input
-        type="text"
-        id="username"
-        placeholder="Enter Username"
-        onChange={handleUsername}
-        value={username}
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter Password"
-        onChange={handlePassword}
-        value={password}
-      />
+    <form className="flex flex-col justify-center gap-8 xl:justify-between h-full grid-child-3">
+      <div className="input-container flex justify-center w-[90%]">
+        <label htmlFor="username" className="label font-work-sans">
+          Username:
+        </label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username"
+          onChange={handleUsername}
+          value={username}
+          className="input"
+        />
+      </div>
+      <div className="input-container flex justify-center w-[90%] bg-blue-600">
+        <label htmlFor="password" className="label font-work-sans">
+          Password:
+        </label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+          onChange={handlePassword}
+          value={password}
+          className="input"
+        />
+      </div>
       <button
-        className="bg-[#2f4858] text-white p-4 rounded mt-8"
+        className="bg-primary text-white font-bold p-2 rounded-2xl w-[30%] place-self-center tracking-widest cursor-pointer"
         onClick={handleLogin}
       >
         Log In

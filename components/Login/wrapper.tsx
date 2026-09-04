@@ -1,16 +1,23 @@
 "use client";
 import { userContextType } from "@/types/types";
 import { useUserContext } from "@/context/userContext";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import Login from ".";
 import NavMenu from "../NavMenu";
+import { useRouter } from "next/navigation";
 
 const LogInWrapper = ({ children }: { children: ReactNode }) => {
-  
+  const router = useRouter();
   const { user } = useUserContext() as userContextType;
 
+  useEffect(() => {
+    if (user) {
+      router.push(`/profile/${user.username}`);
+    }
+  }, [user, router]);
+
   return (
-    <div className="grow">
+    <div>
       {user ? (
         <>
           <NavMenu />

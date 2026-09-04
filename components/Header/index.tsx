@@ -7,9 +7,9 @@ const Header = () => {
   const { user } = useUserContext() as userContextType;
 
   return (
-    <header>
-      <h1>Lune & Table</h1>
-      {user && <h2>Hi, {user.username}</h2>}
+    <header className="p-8 font-fugaz-one text-heading">
+      <h1 className="text-8xl">Lune & Table</h1>
+      {user && <h2 className="">Hi, {user.username}</h2>}
     </header>
   );
 };
