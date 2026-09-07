@@ -1,8 +1,8 @@
-import FavouriteButton from "@/components/FavouriteButton";
+import RecipeCardExpanded from "@/components/RecipeCardExpanded";
 import { FullRecipeType } from "@/types/types";
 
 const RecipePage = async ({ params }: { params: { id: string } }) => {
-
+  
   const { id } = await params;
   let recipe: FullRecipeType | undefined;
 
@@ -42,27 +42,8 @@ const RecipePage = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <main className="grow">
-      <h3>{id}</h3>
-      {recipe && (
-        <>
-          <div>
-            <p>
-              This is a {recipe.strCategory} recipe from {recipe.strCountry}
-            </p>
-            <img src={recipe.strMealThumb} alt={recipe.strMeal}></img>
-            {recipe.ingredients.map((ingredient: string, index: number) => (
-              <p key={index}>{ingredient}</p>
-            ))}
-            <div>{recipe.strInstructions}</div>
-          </div>
-          <FavouriteButton
-            idMeal={recipe.idMeal}
-            strMeal={recipe.strMeal}
-            strMealThumb={recipe.strMealThumb}
-          />
-        </>
-      )}
+    <main className="grow grid place-items-center">
+      {recipe && <RecipeCardExpanded recipe={recipe} />}
     </main>
   );
 };

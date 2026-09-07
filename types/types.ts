@@ -16,6 +16,9 @@ export type RecipeCardType = {
 export type userContextType = {
   user: UserType | null;
   setUser: (user: UserType) => void;
+  categories: string[];
+  username: UserType;
+  name: UserType;
 };
 
 export type FullRecipeType = RecipeCardType & {
@@ -42,4 +45,9 @@ export type NavMenuItemsType = {
 
 export type MealCategoryType = {
   strCategory: string;
-}
+};
+
+export type ProfileCardType = {
+  user: UserType;
+  categories: string[];
+};

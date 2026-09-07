@@ -24,7 +24,7 @@ const FavouriteButton = ({ idMeal, strMeal, strMealThumb }: RecipeCardType) => {
 
   return (
     <button
-      className="bg-blue-600 text-white p-4 my-4 rounded-2xl cursor-pointer"
+      className="bg-secondary text-white font-manrope font-bold tracking-widest p-4 my-4 rounded-2xl cursor-pointer w-[100px] hover:text-primary"
       onClick={handleClick}
     >
       {user && user.recipes.find((recipe) => recipe.idMeal === idMeal)
