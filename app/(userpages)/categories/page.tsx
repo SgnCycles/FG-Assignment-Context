@@ -1,7 +1,9 @@
 const CategoriesPage = () => {
   return (
-    <h2>This is Categories Page</h2>
-  )
+    <main className="grow">
+      <h2>This is Categories Page</h2>
+    </main>
+  );
 };
 
 export default CategoriesPage;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fugaz_One, Work_Sans } from "next/font/google";
+import { Fugaz_One, Work_Sans, Manrope } from "next/font/google";
 import { UserProvider } from "@/context/userContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -17,6 +17,12 @@ const work_sans = Work_Sans({
   subsets: ["latin"],
 });
 
+const manrope = Manrope({
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Savor",
   description: "Choose your next meal",
@@ -29,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fugaz_one.variable} ${work_sans.variable} h-full antialiased`}
+      className={`${fugaz_one.variable} ${work_sans.variable} ${manrope.variable} h-full antialiased`}
     >
       <UserProvider>
         <body className="h-screen flex flex-col m-0 bg-background">

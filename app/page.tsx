@@ -2,8 +2,8 @@ import LogInWrapper from "@/components/Login/wrapper";
 
 export default function Home() {
   return (
-    <div className="flex-1 min-h-0 grid mb-3.75 homepage-grid gap-3 w-full ">
-      <div className="grid-child-1">
+    <div className="flex-1 min-h-0 grid mb-3.75 homepage-grid gap-3 w-[90%] place-self-center">
+      <div className="grid-child-1 border-2">
         <svg
           className="grid-children"
           xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <div className="grid-child-6">
+      <div className="grid-child-6 border-2">
         <svg
           className="grid-children"
           xmlns="http://www.w3.org/2000/svg"

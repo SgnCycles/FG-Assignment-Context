@@ -40,19 +40,25 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    if (!user?.category) {
+    if (!user) return;
+
+    if (!user.category) {
       fetchRandomMeal();
     } else {
       fetchCategoryMeal();
     }
-  }, []);
+  }, [user]);
 
   return (
-    <main className="grow min-h-full">
+    <main className="flex grow max-h-screen items-center justify-around">
       {user && (
-        <p className="text-black text-4xl my-4">
-          Hi, {user.username}! Welcome to our website
-        </p>
+        <div className="h-full w-[50%]">
+          <div className="h-full flex flex-col justify-evenly font-manrope font-bold text-6xl text-heading text-shadow-[2px_2px_rgb(255_165_0)]">
+            <p className="text-7xl">Hi, {user.name}!</p>
+            <p>Here is a recipe to try today.</p>
+            <p>Knives out!</p>
+          </div>
+        </div>
       )}
       {recipe && <RecipeCardSmall {...recipe} />}
     </main>
@@ -60,6 +66,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-//add posibility to see what you write as a password
-
-//make the recipe clickable so you go to another page showing the full recipe

@@ -42,7 +42,7 @@ const RecipePage = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div>
+    <main className="grow">
       <h3>{id}</h3>
       {recipe && (
         <>
@@ -63,7 +63,7 @@ const RecipePage = async ({ params }: { params: { id: string } }) => {
           />
         </>
       )}
-    </div>
+    </main>
   );
 };
 

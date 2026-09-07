@@ -3,11 +3,27 @@ import Link from "next/link";
 
 const RecipeCardSmall = ({ idMeal, strMeal, strMealThumb }: RecipeCardType) => {
   return (
-    <Link className="max-w-md mx-auto my-4" href={`/recipe/${idMeal}`}>
-        <h3 className="my-4 text-4xl text-center">{strMeal}</h3>
-        <div className="w-[80%] m-auto">
-          <img src={strMealThumb} alt={strMeal} className="w-full h-auto"></img>
-        </div>
+    <Link
+      className="relative bg-contain bg-center bg-no-repeat w-100 h-100 border-4 border-primary rounded-full"
+      style={{ backgroundImage: `url(${strMealThumb})` }}
+      href={`/recipe/${idMeal}`}
+    >
+      <h3 className="absolute flex items-center justify-center inset-0 font-fugaz-one text-secondary">
+        {strMeal.split("").map((char, index) => {
+          const angle = (360 / strMeal.length) * index;
+          return (
+            <span
+              className="absolute text-xl"
+              key={index}
+              style={{
+                transform: `rotate(${angle}deg) translateY(-220px)`,
+              }}
+            >
+              {char}
+            </span>
+          );
+        })}
+      </h3>
     </Link>
   );
 };
