@@ -11,11 +11,14 @@ export type RecipeCardType = {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
+  strCategory: string;
 };
 
 export type userContextType = {
   user: UserType | null;
-  setUser: (user: UserType) => void;
+  setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
+  isLoggedIn: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   categories?: string[];
   username?: string;
   name?: string;
@@ -51,3 +54,17 @@ export type ProfileCardType = {
   user: UserType;
   categories: string[];
 };
+
+export type FavouritesType = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+  strCategory: string;
+};
+
+export type FavouritesContextType = {
+  favourites: FavouritesType[];
+  addToFavourites: (item: FavouritesType) => void;
+  removeFavourites: (id:string) => void;
+  isFavourite: (id:string) => boolean;
+}

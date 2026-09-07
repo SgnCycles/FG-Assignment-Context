@@ -6,7 +6,7 @@ import { userContextType } from "@/types/types";
 
 const Login = () => {
   
-  const { setUser } = useUserContext() as userContextType;
+  const { setUser, setIsLoggedIn } = useUserContext() as userContextType;
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -24,7 +24,10 @@ const Login = () => {
       (item) => item.username === username && item.password === password,
     );
 
-    if (loggedInUser) setUser(loggedInUser);
+    if (loggedInUser) {
+      setUser(loggedInUser);
+      setIsLoggedIn(true);
+    }
   };
 
   return (

@@ -4,6 +4,7 @@ import { UserProvider } from "@/context/userContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import { FavouritesProvider } from "@/context/favouritesContext";
 
 const fugaz_one = Fugaz_One({
   variable: "--font-fugaz-one",
@@ -37,13 +38,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${fugaz_one.variable} ${work_sans.variable} ${manrope.variable} h-full antialiased`}
     >
-      <UserProvider>
-        <body className="h-screen flex flex-col m-0 bg-background">
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </UserProvider>
+      <body className="min-h-full flex flex-col m-0 bg-background">
+        <UserProvider>
+          <FavouritesProvider>
+            <Header />
+            {children}
+            <Footer />
+          </FavouritesProvider>
+        </UserProvider>
+      </body>
     </html>
   );
 }

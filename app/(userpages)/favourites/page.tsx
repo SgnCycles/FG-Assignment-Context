@@ -1,7 +1,10 @@
+import Favourites from "@/components/Favourites";
+
 const FavouritesPage = () => {
+  
   return (
-    <main className="grow">
-      <h2>This is Favourites Page</h2>
+    <main className="grow w-full flex justify-center">
+      <Favourites />
     </main>
   );
 };

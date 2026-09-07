@@ -4,7 +4,7 @@ import Link from "next/link";
 const RecipeCardSmall = ({ idMeal, strMeal, strMealThumb }: RecipeCardType) => {
   return (
     <Link
-      className="relative bg-contain bg-center bg-no-repeat w-100 h-100 border-4 border-primary rounded-full"
+      className="relative bg-contain bg-center bg-no-repeat w-80 h-80 border-4 border-primary rounded-full"
       style={{ backgroundImage: `url(${strMealThumb})` }}
       href={`/recipe/${idMeal}`}
     >
@@ -16,7 +16,7 @@ const RecipeCardSmall = ({ idMeal, strMeal, strMealThumb }: RecipeCardType) => {
               className="absolute text-xl"
               key={index}
               style={{
-                transform: `rotate(${angle}deg) translateY(-220px)`,
+                transform: `rotate(${angle}deg) translateY(-190px)`,
               }}
             >
               {char}

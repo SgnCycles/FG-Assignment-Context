@@ -4,7 +4,6 @@ export const NavMenuItems: NavMenuItemsType[] = [
   {
     item: "Home",
     href: "/",
-    //fix so the home button goes to the profile
   },
   {
     item: "Categories",

@@ -43,8 +43,7 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         <FavouriteButton
           idMeal={recipe.idMeal}
           strMeal={recipe.strMeal}
-          strMealThumb={recipe.strMealThumb}
-        />
+          strMealThumb={recipe.strMealThumb} strCategory={recipe.strCategory}        />
       </div>
     </div>
   );
