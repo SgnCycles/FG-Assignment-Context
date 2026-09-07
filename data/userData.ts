@@ -6,7 +6,7 @@ export const users: UserType[] = [
     image: null,
     username: "null_bro",
     password: "123",
-    category: ["Chicken"],
+    categories: ["Chicken"],
     recipes: [],
   },
   {
@@ -14,7 +14,7 @@ export const users: UserType[] = [
     image: null,
     username: "sudo_me",
     password: "456",
-    category: [],
+    categories: ["Vegetarian"],
     recipes: [],
   },
   {
@@ -22,7 +22,7 @@ export const users: UserType[] = [
     image: null,
     username: "git_lol",
     password: "789",
-    category: [],
+    categories: ["Goat"],
     recipes: [],
   },
   {
@@ -30,7 +30,7 @@ export const users: UserType[] = [
     image: null,
     username: "code_bug",
     password: "987",
-    category: [],
+    categories: ["Pasta"],
     recipes: [],
   },
 ];

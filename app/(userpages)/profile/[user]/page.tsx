@@ -18,7 +18,6 @@ const ProfilePage = () => {
       if (data) {
         setRecipe(data.meals[0]);
       }
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -27,13 +26,12 @@ const ProfilePage = () => {
   const fetchCategoryMeal = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_ENDPOINT}filter.php?c=${user!.category}`,
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}filter.php?c=${user!.categories}`,
       );
       const data = await response.json();
       if (data) {
         setRecipe(data.meals[Math.floor(Math.random() * data.meals.length)]);
       }
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +40,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (!user) return;
 
-    if (!user.category) {
+    if (!user.categories) {
       fetchRandomMeal();
     } else {
       fetchCategoryMeal();

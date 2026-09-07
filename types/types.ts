@@ -3,7 +3,7 @@ export type UserType = {
   image: string | null;
   username: string;
   password: string;
-  category: string[] | null;
+  categories: string[] | null;
   recipes: RecipeCardType[];
 };
 
@@ -39,3 +39,7 @@ export type NavMenuItemsType = {
   item: string;
   href: string;
 };
+
+export type MealCategoryType = {
+  strCategory: string;
+}
