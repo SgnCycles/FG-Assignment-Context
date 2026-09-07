@@ -16,9 +16,9 @@ export type RecipeCardType = {
 export type userContextType = {
   user: UserType | null;
   setUser: (user: UserType) => void;
-  categories: string[];
-  username: UserType;
-  name: UserType;
+  categories?: string[];
+  username?: string;
+  name?: string;
 };
 
 export type FullRecipeType = RecipeCardType & {
