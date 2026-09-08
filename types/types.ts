@@ -3,7 +3,7 @@ export type UserType = {
   image: string | null;
   username: string;
   password: string;
-  categories: string[] | null;
+  categories: FavouriteCategoryType[] | null;
   recipes: RecipeCardType[];
 };
 
@@ -12,6 +12,10 @@ export type RecipeCardType = {
   strMeal: string;
   strMealThumb: string;
   strCategory: string;
+};
+
+export type RecipeXSCardType = {
+recipe: RecipeCardType;
 };
 
 export type userContextType = {
@@ -52,7 +56,7 @@ export type MealCategoryType = {
 
 export type ProfileCardType = {
   user: UserType;
-  categories: string[];
+  categories: FavouriteCategoryType[];
 };
 
 export type FavouritesType = {
@@ -62,9 +66,25 @@ export type FavouritesType = {
   strCategory: string;
 };
 
-export type FavouritesContextType = {
-  favourites: FavouritesType[];
+export type FavouriteCategoryType = {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+};
+
+export type FavouriteRecipeContextType = {
+  favouriteRecipes: FavouritesType[];
   addToFavourites: (item: FavouritesType) => void;
-  removeFavourites: (id:string) => void;
-  isFavourite: (id:string) => boolean;
-}
+  removeFavourites: (id: string) => void;
+  isFavourite: (id: string) => boolean;
+};
+
+export type FavouriteCategoriesContextType = {
+  favouriteCategories: FavouriteCategoryType[];
+  categories: FavouriteCategoryType[];
+  addToFavouriteCategory: (item: FavouriteCategoryType) => void;
+  removeFavouriteCategory: (id: string) => void;
+  isFavouriteCategory: (id: string) => boolean;
+  saveProfileCategorySettings:() => void;
+};

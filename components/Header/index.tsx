@@ -4,6 +4,7 @@ import { userContextType } from "@/types/types";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
+  
   const { user, setUser, setIsLoggedIn } = useUserContext() as userContextType;
   const router = useRouter();
 
@@ -14,9 +15,9 @@ const Header = () => {
   };
 
   return (
-    <header className="p-8 font-fugaz-one text-heading">
+    <header className="h-[10rem] font-fugaz-one text-heading flex items-center justify-between px-8">
       <h1 className="text-8xl">Lune & Table</h1>
-      {user && <button onClick={handleLogOut}>LOG OUT</button>}
+      {user && <button className="hover:text-secondary cursor-pointer" onClick={handleLogOut}>LOG OUT</button>}
     </header>
   );
 };

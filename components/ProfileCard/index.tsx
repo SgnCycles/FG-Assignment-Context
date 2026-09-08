@@ -1,11 +1,32 @@
-import { ProfileCardType } from "@/types/types";
+import { useFavouriteCategoryContext } from "@/context/favouriteCategoriesContext";
+import {
+  FavouriteCategoriesContextType,
+  FavouriteCategoryType,
+  ProfileCardType,
+} from "@/types/types";
 
 const ProfileCard = ({ user, categories }: ProfileCardType) => {
+
+  const {
+    saveProfileCategorySettings,
+    addToFavouriteCategory,
+    removeFavouriteCategory,
+    isFavouriteCategory,
+  } = useFavouriteCategoryContext() as FavouriteCategoriesContextType;
+
+  const handleAddCategoryClick = (category: FavouriteCategoryType) => {
+    if (isFavouriteCategory(category.idCategory)) {
+      removeFavouriteCategory(category.idCategory);
+    } else {
+      addToFavouriteCategory(category);
+    }
+  };
+
   return (
     <>
       <div className="profile-settings w-[90%] grid m-auto font-manrope text-heading gap-x-2 gap-y-2">
         <div className="profile-settings-header flex justify-center items-center bg-primary text-font-secondary">
-          <h2 className="font-bold text-3xl text-center">Profile Settings</h2>
+          <h1 className="font-bold text-3xl text-center">Profile Settings</h1>
         </div>
         <div className="profile-settings-image h-[full] w-[full] p-4 bg-primary text-font-secondary">
           <svg
@@ -33,21 +54,22 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
           </h3>
           <ul className="flex flex-wrap">
             {categories &&
-              categories.map((item, index) => (
-                <li key={index} className="p-2">
+              categories.map((item) => (
+                <li key={item.idCategory} className="p-2">
                   <input
                     type="checkbox"
-                    checked={user?.categories?.includes(item) ? true : false}
-                    id={`check-${item}`}
-                    name={item}
-                    value={item}
+                    onChange={() => handleAddCategoryClick(item)}
+                    checked={isFavouriteCategory(item.idCategory)}
+                    id={`check-${item.strCategory}`}
+                    name={item.strCategory}
+                    value={item.strCategory}
                     className="accent-secondary"
                   ></input>
                   <label
                     className="pl-1 font-semibold"
-                    htmlFor={`check-${item}`}
+                    htmlFor={`check-${item.strCategory}`}
                   >
-                    {item}
+                    {item.strCategory}
                   </label>
                 </li>
               ))}
@@ -55,7 +77,10 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
         </div>
       </div>
       <div className="flex w-[90%] justify-end">
-        <button className="bg-primary text-font-secondary font-bold p-2 rounded-2xl px-8 place-self-center tracking-widest cursor-pointer mb-2">
+        <button
+          className="bg-primary text-font-secondary font-bold p-2 rounded-2xl px-8 place-self-center tracking-widest cursor-pointer mb-2"
+          onClick={saveProfileCategorySettings}
+        >
           Save
         </button>
       </div>

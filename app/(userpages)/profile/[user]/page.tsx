@@ -5,7 +5,7 @@ import { useUserContext } from "@/context/userContext";
 import RecipeCardSmall from "@/components/RecipeCardSmall";
 
 const ProfilePage = () => {
-
+  
   const { user } = useUserContext() as userContextType;
   const [recipe, setRecipe] = useState<RecipeCardType | null>(null);
 
@@ -23,27 +23,34 @@ const ProfilePage = () => {
     }
   };
 
-  const fetchCategoryMeal = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_ENDPOINT}filter.php?c=${user!.categories}`,
-      );
-      const data = await response.json();
-      if (data) {
-        setRecipe(data.meals[Math.floor(Math.random() * data.meals.length)]);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchCategoryMeal = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_API_ENDPOINT}filter.php?c=${user!.categories}`,
+  //     );
+  //     const data = await response.json();
+  //     if (data) {
+  //       setRecipe(data.meals[Math.floor(Math.random() * data.meals.length)]);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (!user) return;
+
+  //   if (!user.categories) {
+  //     fetchRandomMeal();
+  //   } else {
+  //     fetchCategoryMeal();
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     if (!user) return;
-
-    if (!user.categories) {
+    if (user) {
       fetchRandomMeal();
-    } else {
-      fetchCategoryMeal();
     }
   }, [user]);
 

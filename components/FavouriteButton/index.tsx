@@ -1,6 +1,6 @@
 "use client";
 import { RecipeCardType, FavouritesType } from "@/types/types";
-import { useFavouritesContext } from "@/context/favouritesContext";
+import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 
 const FavouriteButton = ({
   idMeal,
@@ -8,7 +8,7 @@ const FavouriteButton = ({
   strMealThumb,
   strCategory,
 }: RecipeCardType) => {
-
+  
   const { addToFavourites, removeFavourites, isFavourite } =
     useFavouritesContext()!;
 

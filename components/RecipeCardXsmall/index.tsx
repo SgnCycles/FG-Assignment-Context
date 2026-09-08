@@ -2,17 +2,22 @@
 import { RecipeCardType } from "@/types/types";
 import Link from "next/link";
 import { FaTrashCan } from "react-icons/fa6";
-import { useFavouritesContext } from "@/context/favouritesContext";
+import { MdAddCircleOutline } from "react-icons/md";
+import { useFavouritesContext } from "@/context/favouriteRecipeContext";
+import { usePathname } from "next/navigation";
 
 const RecipeCardXsmall = ({
   idMeal,
   strMeal,
   strMealThumb,
 }: RecipeCardType) => {
-  const { removeFavourites } = useFavouritesContext()!;
+  
+  const { removeFavourites, addToFavourites } = useFavouritesContext()!;
+  const pathname = usePathname();
+  const isCategoryPage = pathname.includes("/category/");
 
   return (
-    <div className="flex justify-between px-8">
+    <div className="flex justify-between mb-4">
       <Link
         className="flex cursor-pointer justify-between"
         href={`/recipe/${idMeal}`}
@@ -31,10 +36,17 @@ const RecipeCardXsmall = ({
         </div>
       </Link>
       <div className="grid place-items-center">
-        <FaTrashCan
-          className="text-2xl cursor-pointer text-secondary"
-          onClick={() => removeFavourites(idMeal)}
-        />
+        {isCategoryPage ? (
+          <MdAddCircleOutline
+            className="text-2xl cursor-pointer text-primary"
+            // onClick={() => addToFavourites(recipe)}
+          />
+        ) : (
+          <FaTrashCan
+            className="text-2xl cursor-pointer text-secondary"
+            onClick={() => removeFavourites(idMeal)}
+          />
+        )}
       </div>
     </div>
   );

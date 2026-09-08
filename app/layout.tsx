@@ -4,7 +4,8 @@ import { UserProvider } from "@/context/userContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
-import { FavouritesProvider } from "@/context/favouritesContext";
+import { FavouriteRecipeProvider } from "@/context/favouriteRecipeContext";
+import { FavouriteCategoryProvider } from "@/context/favouriteCategoriesContext";
 
 const fugaz_one = Fugaz_One({
   variable: "--font-fugaz-one",
@@ -40,11 +41,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col m-0 bg-background">
         <UserProvider>
-          <FavouritesProvider>
-            <Header />
-            {children}
-            <Footer />
-          </FavouritesProvider>
+          <FavouriteCategoryProvider>
+            <FavouriteRecipeProvider>
+              <Header />
+              {children}
+              <Footer />
+            </FavouriteRecipeProvider>
+          </FavouriteCategoryProvider>
         </UserProvider>
       </body>
     </html>
