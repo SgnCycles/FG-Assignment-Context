@@ -20,12 +20,28 @@
   @apply relative flex p-5 justify-start bg-input border-4 border-primary gap-4 max-h-17.5 shadow-[5px_5px_var(--color-primary)] min-w-87.5 rounded-[20px];
 }
 
-.input {
+.input-username {
   @apply ml-auto w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332] focus:translate-x-1.25 focus:-translate-y-1.25 focus:translate-z-5;
+}
+
+.password-input:focus-within {
+  @apply translate-x-1.25 -translate-y-1.25
+}
+
+.input-password {
+  @apply ml-auto w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332]
+}
+
+.eye-icon {
+  @apply cursor-pointer absolute text-primary top-3.5 right-3 text-xl -translate-y-1/2
 }
 
 .label {
   @apply absolute top-3.75 -left-10 bg-[#e9b50b] text-black font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-black rounded-[20px] tracking-widest;
+}
+
+.save-button {
+  @apply inline-block py-1 px-5 text-2xl font-bold tracking-widest bg-secondary border-2 border-primary text-primary rounded-xl shadow-[5px_5px_0_#095332] transition-all duration-300 ease-in-out cursor-pointer hover:bg-[#e9b50b] hover:text-secondary hover:border-secondary hover:shadow-[5px_5px_0_#f73333] active:bg-amber-300 active:shadow-none active:translate-y-2 w-40 hover:tracking-[5px]
 }
 
 .grid-children {
@@ -39,7 +55,7 @@
 
 .profile-settings {
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, minmax(0, 200px));
+  grid-template-rows: repeat(3, minmax(0, 200px));
 }
 
 .profile-settings-header {
@@ -60,6 +76,10 @@
 
 .profile-settings-categories {
   grid-area: 2 / 2 / 3 / 4;
+}
+.profile-settings-button {
+  grid-area: 3 / 1 / 4 / 4;
+  height: 50px;
 }
 
 .recipe-expanded {

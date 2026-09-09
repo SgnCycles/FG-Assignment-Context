@@ -11,11 +11,11 @@ const CategoriesPage = () => {
     useFavouriteCategoryContext() as FavouriteCategoriesContextType;
 
   return (
-    <main className="grow flex flex-col justify-center gap-4 w-full pb-8 mt-8">
-      <h1 className="font-bold text-5xl text-start text-heading font-manrope mb-8 pl-8">
+    <main className="grow flex flex-col justify-start items-center gap-4 w-full pb-8 mt-8">
+      <h1 className="w-full font-bold text-5xl text-start text-heading font-manrope mb-8 pl-8">
         Favourite Categories
       </h1>
-      <div className="category-grid grid w-[90%] m-auto font-manrope text-heading gap-x-2 gap-y-2">
+      <div className="category-grid grid w-[90%] gap-4">
         {user &&
           favouriteCategories &&
           favouriteCategories.map((category) => (

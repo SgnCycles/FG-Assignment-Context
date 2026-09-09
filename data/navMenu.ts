@@ -1,9 +1,9 @@
-import { NavMenuItemsType } from "@/types/types";
+import { NavMenuItemsType, userContextType } from "@/types/types";
 
 export const NavMenuItems: NavMenuItemsType[] = [
   {
     item: "Home",
-    href: "/",
+    href: "/"
   },
   {
     item: "Categories",

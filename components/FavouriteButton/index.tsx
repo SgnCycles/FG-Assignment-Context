@@ -29,7 +29,7 @@ const FavouriteButton = ({
 
   return (
     <button
-      className="bg-secondary text-white font-manrope font-bold tracking-widest p-4 my-4 rounded-2xl cursor-pointer w-25 hover:text-primary"
+      className="save-button"
       onClick={handleClick}
     >
       {isFavourite(idMeal) ? "Remove" : "Save"}

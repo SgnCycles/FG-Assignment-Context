@@ -11,7 +11,7 @@ const ProfileSettingsPage = () => {
     useFavouriteCategoryContext() as FavouriteCategoriesContextType;
 
   return (
-    <main className="grow flex flex-col items-center justify-center">
+    <main className="grow min-h-full flex flex-col justify-start items-center">
       {user && <ProfileCard user={user} categories={categories} />}
     </main>
   );

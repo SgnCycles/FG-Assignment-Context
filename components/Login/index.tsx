@@ -3,12 +3,14 @@ import { SetStateAction, useState } from "react";
 import { users } from "@/data/userData";
 import { useUserContext } from "@/context/userContext";
 import { userContextType } from "@/types/types";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Login = () => {
-  
+
   const { setUser, setIsLoggedIn } = useUserContext() as userContextType;
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleUsername = (e: { target: { value: SetStateAction<string> } }) => {
     setUsername(e.target.value);
@@ -31,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <form className="flex flex-col justify-center gap-8 xl:justify-between h-full grid-child-3">
+    <form className="flex flex-col justify-center items-center gap-8 xl:justify-evenly h-full grid-child-3">
       <div className="input-container flex justify-center w-[90%]">
         <label htmlFor="username" className="label font-work-sans">
           Username:
@@ -42,28 +44,40 @@ const Login = () => {
           placeholder="Enter Username"
           onChange={handleUsername}
           value={username}
-          className="input"
+          className="input-username"
         />
       </div>
-      <div className="input-container flex justify-center w-[90%] bg-blue-600">
+      <div className="input-container flex justify-center w-[90%]">
         <label htmlFor="password" className="label font-work-sans">
           Password:
         </label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter Password"
-          onChange={handlePassword}
-          value={password}
-          className="input"
-        />
+        <div className="password-input relative w-full flex flex-end">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            placeholder="Enter Password"
+            onChange={handlePassword}
+            value={password}
+            className="input-password relative"
+          />
+          {showPassword ? (
+            <AiFillEye
+              className="eye-icon"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          ) : (
+            <AiFillEyeInvisible
+              className="eye-icon"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          )}
+        </div>
       </div>
-      <button
-        className="bg-primary text-white font-bold p-2 rounded-2xl w-[30%] place-self-center tracking-widest cursor-pointer"
-        onClick={handleLogin}
-      >
-        Log In
-      </button>
+      <div className="flex justify-center">
+        <button className="save-button" onClick={handleLogin}>
+          Log In
+        </button>
+      </div>
     </form>
   );
 };
