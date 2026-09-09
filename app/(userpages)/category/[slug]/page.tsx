@@ -7,7 +7,6 @@ const CategoryPage = async ({ params }: { params: { slug: string } }) => {
 
   const MEAL_API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
-  console.log("MEAL_API_ENDPOINT", MEAL_API_ENDPOINT)
   try {
     const response = await fetch(
       `${MEAL_API_ENDPOINT}filter.php?c=${slug}`,

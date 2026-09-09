@@ -7,9 +7,9 @@ import RecipeCardSmall from "@/components/RecipeCardSmall";
 const ProfilePage = () => {
   const { user } = useUserContext() as userContextType;
   const [recipe, setRecipe] = useState<RecipeCardType | null>(null);
+
   const MEAL_API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
-  console.log("MEAL_API_ENDPOINT_PROFILE", MEAL_API_ENDPOINT)
   const fetchRandomMeal = async () => {
     try {
       const response = await fetch(
