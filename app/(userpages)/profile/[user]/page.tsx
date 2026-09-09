@@ -1,20 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import { RecipeCardType, userContextType } from "@/types/types";
+import { FullRecipeType, userContextType } from "@/types/types";
 import { useUserContext } from "@/context/userContext";
 import RecipeCardSmall from "@/components/RecipeCardSmall";
 
 const ProfilePage = () => {
-  const { user } = useUserContext() as userContextType;
-  const [recipe, setRecipe] = useState<RecipeCardType | null>(null);
 
+  const { user } = useUserContext() as userContextType;
+  const [recipe, setRecipe] = useState<FullRecipeType | null>(null);
   const MEAL_API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
   const fetchRandomMeal = async () => {
     try {
-      const response = await fetch(
-        `${MEAL_API_ENDPOINT}random.php`,
-      );
+      const response = await fetch(`${MEAL_API_ENDPOINT}random.php`);
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
       }
@@ -69,7 +67,7 @@ const ProfilePage = () => {
           </div>
         </div>
       )}
-      {recipe && <RecipeCardSmall {...recipe} />}
+      {recipe && <RecipeCardSmall recipe={recipe} />}
     </main>
   );
 };

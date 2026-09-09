@@ -1,5 +1,11 @@
 "use client";
-import { FavouriteRecipeContextType, FavouritesType, userContextType } from "@/types/types";
+import {
+  FavouriteRecipeContextType,
+  FavouritesType,
+  FullRecipeType,
+  ShoppingListType,
+  userContextType,
+} from "@/types/types";
 import {
   createContext,
   useContext,
@@ -18,11 +24,13 @@ export const FavouriteRecipeProvider = ({
 }: {
   children: ReactNode;
 }) => {
+
   const { user } = useUserContext() as userContextType;
+  const [recipe, setRecipe] = useState<FullRecipeType | null>(null);
   const [favouriteRecipes, setFavouriteRecipes] = useState<FavouritesType[]>(
     [],
   );
-  const [pageHasLoaded, setPageHasLoaded] = useState(false);
+  const [shoppingList, setShoppingList] = useState<ShoppingListType[]>([]);
 
   const addToFavourites = (newRecipe: FavouritesType) => {
     setFavouriteRecipes((currentRecipe) => {
@@ -41,6 +49,23 @@ export const FavouriteRecipeProvider = ({
     return favouriteRecipes.some((item) => item.idMeal === id);
   };
 
+  const addToShoppingList = (newRecipe: ShoppingListType) => {
+    setShoppingList((currentRecipe) => {
+      const updatedShoppingList = [...currentRecipe, newRecipe];
+      return updatedShoppingList;
+    });
+  };
+
+  const removeFromShoppingList = (id: string) => {
+    setShoppingList((curentRecipe) =>
+      curentRecipe.filter((item) => item.idMeal !== id),
+    );
+  };
+
+  const isOnShoppingList = (id: string) => {
+    return shoppingList.some((item) => item.idMeal === id);
+  };
+
   useEffect(() => {
     if (!user) return;
     const recipeArray = localStorage.getItem(`recipes_${user.id}`);
@@ -49,13 +74,78 @@ export const FavouriteRecipeProvider = ({
     } else {
       setFavouriteRecipes([]);
     }
-    setPageHasLoaded(true);
   }, [user]);
 
   useEffect(() => {
-    if (!pageHasLoaded || !user) return;
-    localStorage.setItem(`recipes_${user.id}`, JSON.stringify(favouriteRecipes));
-  }, [favouriteRecipes, pageHasLoaded, user]);
+    if (!user) return;
+    localStorage.setItem(
+      `recipes_${user.id}`,
+      JSON.stringify(favouriteRecipes),
+    );
+  }, [favouriteRecipes, user]);
+
+  const getRecipe = async (id: string) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}lookup.php?i=${id}`,
+      );
+      const data = await response.json();
+      const receivedRecipe = data.meals[0];
+
+      if (!receivedRecipe) return;
+
+      if (receivedRecipe) {
+        const ingredient = Object.entries(receivedRecipe).filter(([key]) =>
+          key.startsWith("strIngredient"),
+        );
+        const ingredientAmount = Object.entries(receivedRecipe).filter(
+          ([key]) => key.startsWith("strMeasure"),
+        );
+        const combinedIngredients: string[] = [];
+
+        for (let i = 0; i < ingredient.length; i++) {
+          const ingredientValue = Object.values(ingredient[i]);
+          const measurementValue = Object.values(ingredientAmount[i]);
+          if (
+            ingredientValue[1] !== "" &&
+            ingredientValue[1] !== null &&
+            ingredientValue[1] !== " "
+          ) {
+            combinedIngredients.push(
+              ingredientValue[1] + ": " + measurementValue[1],
+            );
+          }
+        }
+
+        const fullRecipe = {
+          ...receivedRecipe,
+          ingredients: combinedIngredients,
+        };
+        setRecipe(fullRecipe);
+        return fullRecipe;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!user) return;
+    const ingredientArray = localStorage.getItem(`shoppingList_${user.id}`);
+    if (ingredientArray) {
+      setShoppingList(JSON.parse(ingredientArray));
+    } else {
+      setShoppingList([]);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    localStorage.setItem(
+      `shoppingList_${user.id}`,
+      JSON.stringify(shoppingList),
+    );
+  }, [shoppingList, user]);
 
   return (
     <FavouriteRecipeContext.Provider
@@ -64,6 +154,12 @@ export const FavouriteRecipeProvider = ({
         addToFavourites,
         removeFavourites,
         isFavourite,
+        recipe,
+        getRecipe,
+        addToShoppingList,
+        removeFromShoppingList,
+        isOnShoppingList,
+        shoppingList,
       }}
     >
       {children}

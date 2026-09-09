@@ -11,6 +11,7 @@ import {
 const UserContext = createContext<userContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
+  
   const [user, setUser] = useState<UserType | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 

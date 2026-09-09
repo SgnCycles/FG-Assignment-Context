@@ -1,45 +1,16 @@
+"use client";
 import RecipeCardExpanded from "@/components/RecipeCardExpanded";
-import { FullRecipeType } from "@/types/types";
+import { useFavouritesContext } from "@/context/favouriteRecipeContext";
+import { useEffect, use } from "react";
 
-const RecipePage = async ({ params }: { params: { id: string } }) => {
+const RecipePage = ({ params }: { params: Promise<{ id: string }> }) => {
   
-  const { id } = await params;
-  let recipe: FullRecipeType | undefined;
+  const { id } = use(params);
+  const { recipe, getRecipe } = useFavouritesContext()!;
 
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_ENDPOINT}lookup.php?i=${id}`,
-    );
-    const data = await response.json();
-    recipe = data.meals[0];
-
-    if (recipe) {
-      const ingredient = Object.entries(recipe).filter(([key]) =>
-        key.startsWith("strIngredient"),
-      );
-      const ingredientAmount = Object.entries(recipe).filter(([key]) =>
-        key.startsWith("strMeasure"),
-      );
-      const combinedIngredients: string[] = [];
-
-      for (let i = 0; i < ingredient.length; i++) {
-        const ingredientValue = Object.values(ingredient[i]);
-        const measurementValue = Object.values(ingredientAmount[i]);
-        if (
-          ingredientValue[1] !== "" &&
-          ingredientValue[1] !== null &&
-          ingredientValue[1] !== " "
-        ) {
-          combinedIngredients.push(
-            ingredientValue[1] + ": " + measurementValue[1],
-          );
-        }
-      }
-      recipe.ingredients = combinedIngredients;
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  useEffect(() => {
+    getRecipe(id);
+  }, [id, getRecipe]);
 
   return (
     <main className="grow grid place-items-center">

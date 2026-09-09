@@ -15,8 +15,14 @@ export type RecipeCardType = {
   strCategory: string;
 };
 
-export type RecipeXSCardType = {
-recipe: RecipeCardType;
+export type RecipeXSCardType = RecipeCardType & {
+  ingredients?: string[];
+};
+
+export type FullRecipeType = RecipeCardType & {
+  strCountry: string;
+  strInstructions: string;
+  ingredients: string[];
 };
 
 export type userContextType = {
@@ -27,13 +33,6 @@ export type userContextType = {
   categories?: string[];
   username?: string;
   name?: string;
-};
-
-export type FullRecipeType = RecipeCardType & {
-  strCategory: string;
-  strCountry: string;
-  strInstructions: string;
-  ingredients: string[];
 };
 
 export type MealType = {
@@ -74,11 +73,21 @@ export type FavouriteCategoryType = {
   strCategoryDescription: string;
 };
 
+export type ShoppingListType = RecipeCardType & {
+  combinedIngredients: string[];
+};
+
 export type FavouriteRecipeContextType = {
   favouriteRecipes: FavouritesType[];
   addToFavourites: (item: FavouritesType) => void;
   removeFavourites: (id: string) => void;
   isFavourite: (id: string) => boolean;
+  recipe: FullRecipeType | null;
+  getRecipe: (id: string) => Promise<FullRecipeType | null>;
+  addToShoppingList: (item: ShoppingListType) => void;
+  removeFromShoppingList: (id: string) => void;
+  isOnShoppingList: (id: string) => boolean;
+  shoppingList: ShoppingListType[];
 };
 
 export type FavouriteCategoriesContextType = {
@@ -87,5 +96,5 @@ export type FavouriteCategoriesContextType = {
   addToFavouriteCategory: (item: FavouriteCategoryType) => void;
   removeFavouriteCategory: (id: string) => void;
   isFavouriteCategory: (id: string) => boolean;
-  saveProfileCategorySettings:() => void;
+  saveProfileCategorySettings: () => void;
 };

@@ -1,8 +1,28 @@
-import { FullRecipeType } from "@/types/types";
+import { FullRecipeType, ShoppingListType } from "@/types/types";
 import FavouriteButton from "../FavouriteButton";
-import { MdAddCircleOutline } from "react-icons/md";
+import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
+import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 
 const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
+
+  const { addToShoppingList, removeFromShoppingList, isOnShoppingList } =
+    useFavouritesContext()!;
+
+  const handleShoppingListClick = () => {
+    const recipeForShoppingList: ShoppingListType = {
+      idMeal: recipe.idMeal,
+      strMeal: recipe.strMeal,
+      strMealThumb: recipe.strMealThumb,
+      strCategory: recipe.strCategory,
+      combinedIngredients: recipe.ingredients,
+    };
+    if (isOnShoppingList(recipe.idMeal)) {
+      removeFromShoppingList(recipe.idMeal);
+    } else {
+      addToShoppingList(recipeForShoppingList);
+    }
+  };
+
   return (
     <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-primary">
       <div className="meal-name font-manrope bg-primary text-font-secondary p-8">
@@ -30,7 +50,17 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
           </ul>
         </div>
         <div className="absolute top-1 right-1">
-          <MdAddCircleOutline  className="text-2xl cursor-pointer"/>
+          {isOnShoppingList(recipe.idMeal) ? (
+            <MdPlaylistAddCheck
+              className="text-2xl cursor-pointer"
+              onClick={handleShoppingListClick}
+            />
+          ) : (
+            <MdPlaylistAdd
+              className="text-2xl cursor-pointer"
+              onClick={handleShoppingListClick}
+            />
+          )}
         </div>
       </div>
       <div className="meal-instructions p-8 border-2 border-primary bg-orange-200">
@@ -43,7 +73,9 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         <FavouriteButton
           idMeal={recipe.idMeal}
           strMeal={recipe.strMeal}
-          strMealThumb={recipe.strMealThumb} strCategory={recipe.strCategory}        />
+          strMealThumb={recipe.strMealThumb}
+          strCategory={recipe.strCategory}
+        />
       </div>
     </div>
   );

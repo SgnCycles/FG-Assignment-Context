@@ -6,6 +6,7 @@ import {
 } from "@/types/types";
 
 const ProfileCard = ({ user, categories }: ProfileCardType) => {
+  
   const {
     saveProfileCategorySettings,
     addToFavouriteCategory,

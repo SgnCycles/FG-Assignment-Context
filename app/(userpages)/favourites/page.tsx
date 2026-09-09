@@ -2,7 +2,6 @@
 import FavouriteRecipes from "@/components/FavouriteRecipes";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 
-
 const FavouritesPage = () => {
 
   const { favouriteRecipes } = useFavouritesContext()!;

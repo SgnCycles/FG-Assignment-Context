@@ -1,16 +1,16 @@
-import { RecipeCardType } from "@/types/types";
+import { FullRecipeType } from "@/types/types";
 import Link from "next/link";
 
-const RecipeCardSmall = ({ idMeal, strMeal, strMealThumb }: RecipeCardType) => {
+const RecipeCardSmall = ({ recipe }: { recipe: FullRecipeType }) => {
   return (
     <Link
       className="relative bg-contain bg-center bg-no-repeat w-80 h-80 border-4 border-primary rounded-full"
-      style={{ backgroundImage: `url(${strMealThumb})` }}
-      href={`/recipe/${idMeal}`}
+      style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
+      href={`/recipe/${recipe.idMeal}`}
     >
       <h3 className="absolute flex items-center justify-center inset-0 font-fugaz-one text-secondary">
-        {strMeal.split("").map((char, index) => {
-          const angle = (360 / strMeal.length) * index;
+        {recipe.strMeal.split("").map((char, index) => {
+          const angle = (360 / recipe.strMeal.length) * index;
           return (
             <span
               className="absolute text-xl"
