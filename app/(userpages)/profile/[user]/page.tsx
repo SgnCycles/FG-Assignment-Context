@@ -5,7 +5,6 @@ import { useUserContext } from "@/context/userContext";
 import RecipeCardSmall from "@/components/RecipeCardSmall";
 
 const ProfilePage = () => {
-  
   const { user } = useUserContext() as userContextType;
   const [recipe, setRecipe] = useState<RecipeCardType | null>(null);
 
@@ -14,6 +13,9 @@ const ProfilePage = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_ENDPOINT}random.php`,
       );
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
       const data = await response.json();
       if (data) {
         setRecipe(data.meals[0]);
