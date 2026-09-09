@@ -63,7 +63,7 @@ export const FavouriteCategoryProvider = ({
 
   const saveProfileCategorySettings = () => {
     localStorage.setItem(
-      "favouriteCategories",
+      `favouriteCategories_${user!.id}`,
       JSON.stringify(favouriteCategories),
     );
   };
@@ -74,12 +74,15 @@ export const FavouriteCategoryProvider = ({
   }, [user]);
 
   useEffect(() => {
-    const categoryArray = localStorage.getItem("favouriteCategories");
+    if (!user) return;
+    const categoryArray = localStorage.getItem(`favouriteCategories_${user.id}`);
     if (categoryArray) {
       setFavouriteCategories(JSON.parse(categoryArray));
+    } else {
+      setFavouriteCategories(user.categories || []);
     }
     setPageHasLoaded(true);
-  }, []);
+  }, [user]);
 
   return (
     <FavouriteCategoriesContext.Provider

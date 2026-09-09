@@ -1,5 +1,5 @@
 "use client";
-import { FavouriteRecipeContextType, FavouritesType } from "@/types/types";
+import { FavouriteRecipeContextType, FavouritesType, userContextType } from "@/types/types";
 import {
   createContext,
   useContext,
@@ -7,6 +7,7 @@ import {
   ReactNode,
   useEffect,
 } from "react";
+import { useUserContext } from "./userContext";
 
 const FavouriteRecipeContext = createContext<FavouriteRecipeContextType | null>(
   null,
@@ -17,7 +18,7 @@ export const FavouriteRecipeProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  
+  const { user } = useUserContext() as userContextType;
   const [favouriteRecipes, setFavouriteRecipes] = useState<FavouritesType[]>(
     [],
   );
@@ -41,19 +42,20 @@ export const FavouriteRecipeProvider = ({
   };
 
   useEffect(() => {
-    const recipeArray = localStorage.getItem("recipes");
+    if (!user) return;
+    const recipeArray = localStorage.getItem(`recipes_${user.id}`);
     if (recipeArray) {
       setFavouriteRecipes(JSON.parse(recipeArray));
+    } else {
+      setFavouriteRecipes([]);
     }
-
     setPageHasLoaded(true);
-  }, []);
+  }, [user]);
 
   useEffect(() => {
-    if (!pageHasLoaded) return;
-
-    localStorage.setItem("recipes", JSON.stringify(favouriteRecipes));
-  }, [favouriteRecipes, pageHasLoaded]);
+    if (!pageHasLoaded || !user) return;
+    localStorage.setItem(`recipes_${user.id}`, JSON.stringify(favouriteRecipes));
+  }, [favouriteRecipes, pageHasLoaded, user]);
 
   return (
     <FavouriteRecipeContext.Provider
