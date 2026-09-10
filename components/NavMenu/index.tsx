@@ -5,6 +5,7 @@ import { userContextType } from "@/types/types";
 import Link from "next/link";
 
 const NavMenu = () => {
+  
   const { user } = useUserContext() as userContextType;
   const { favouriteRecipes, shoppingList } = useFavouritesContext()!;
 

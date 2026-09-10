@@ -1,22 +1,32 @@
-import { FavouriteRecipeContextType, ShoppingListType } from "@/types/types";
+import {
+  FavouriteRecipeContextType,
+  ShoppingListType,
+  userContextType,
+} from "@/types/types";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { FaTrashCan } from "react-icons/fa6";
 import { toast } from "react-toastify";
+import Link from "next/link";
+import { useUserContext } from "@/context/userContext";
 
 const ShoppingListCard = ({ recipe }: { recipe: ShoppingListType }) => {
 
-  const { removeFromShoppingList } = useFavouritesContext() as FavouriteRecipeContextType;
+  const { removeFromShoppingList } =
+    useFavouritesContext() as FavouriteRecipeContextType;
+  const { user } = useUserContext() as userContextType;
 
   return (
     <div className="shopping-list mb-4 gap-x-2 gap-y-2 text-primary bg-primary relative">
       <div className="flex flex-col lg:flex-row pt-4 pl-2 lg:pb-4">
-        <div className="meal-image h-30 w-30 lg:h-45 lg:w-45">
-          <img
-            className="w-full h-full rounded-full border-4"
-            src={recipe.strMealThumb}
-            alt={recipe.strMeal}
-          ></img>
-        </div>
+        <Link href={`/${user!.username}/recipe/${recipe.idMeal}`}>
+          <div className="meal-image h-30 w-30 lg:h-45 lg:w-45">
+            <img
+              className="w-full h-full rounded-full border-4"
+              src={recipe.strMealThumb}
+              alt={recipe.strMeal}
+            ></img>
+          </div>
+        </Link>
         <div className="grow flex items-center font-manrope bg-primary text-font-secondary pt-4 pl-2 lg:p-8">
           <h3 className="font-bold text-2xl text-start mb-2">
             {recipe.strMeal}

@@ -6,7 +6,7 @@ import Login from ".";
 import NavMenu from "../NavMenu";
 import { useRouter } from "next/navigation";
 
-const LogInWrapper = ({ children }: { children: ReactNode }) => {
+const LogInWrapper = ({ children }: { children?: ReactNode }) => {
   
   const router = useRouter();
   const { user } = useUserContext() as userContextType;

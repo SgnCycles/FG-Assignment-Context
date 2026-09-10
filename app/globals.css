@@ -8,23 +8,13 @@
   --font-fugaz-one: var(--font-fugaz-one);
   --font-work-sans: var(--font-work-sans);
   --font-manrope: var(--font-manrope);
-  /* --color-background: #fff0dc; */
-/*  
-  --color-heading: #164e30;
+  --color-background: #f9eeda;
   --color-input: #f0f0f0;
   --color-primary: #095332;
-  --color-secondary: #f73333;
-  --color-font-secondary: #fef0dc; */
-
-  /* new colour palette */
- --color-background: #F9EEDA;
- --color-input: #f0f0f0;
- --color-primary: #095332;
- --color-secondary: #DE5C38;
- --color-accent: #F2BF4A;
- --color-font-primary: #18472e;
- --color-font-secondary: #fef0dc;
-  
+  --color-secondary: #de5c38;
+  --color-accent: #f2bf4a;
+  --color-font-primary: #18472e;
+  --color-font-secondary: #fef0dc;
 }
 
 .input-container {

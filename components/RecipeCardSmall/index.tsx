@@ -3,31 +3,28 @@ import { FullRecipeType, userContextType } from "@/types/types";
 import Link from "next/link";
 
 const RecipeCardSmall = ({ recipe }: { recipe: FullRecipeType }) => {
-
-  const { user } = useUserContext() as userContextType;
   
+  const { user } = useUserContext() as userContextType;
+
   return (
     <Link
       className="relative bg-contain bg-center bg-no-repeat w-60 h-60 lg:w-80 lg:h-80 border-4 border-primary rounded-full"
       style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
       href={`/${user!.username}/recipe/${recipe.idMeal}`}
     >
-      <h3 className="absolute flex items-center justify-center inset-0 font-fugaz-one text-secondary">
-        {recipe.strMeal.split("").map((char, index) => {
-          const angle = (360 / recipe.strMeal.length) * index;
-          return (
-            <span
-              className="absolute text-xl"
-              key={index}
-              style={{
-                transform: `rotate(${angle}deg) translateY(-140px)`,
-              }}
-            >
-              {char}
-            </span>
-          );
-        })}
-      </h3>
+      <svg
+        className="absolute -inset-8.75 overflow-visible w-[calc(100%+70px)] h-[calc(100%+70px)]"
+        viewBox="0 0 500 500"
+      >
+        <path
+          id="textcircle"
+          fill="none"
+          d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
+        ></path>
+        <text dy="-30" fill="#de5c38" className="font-fugaz-one text-4xl">
+          <textPath xlinkHref="#textcircle">{recipe.strMeal}</textPath>
+        </text>
+      </svg>
     </Link>
   );
 };

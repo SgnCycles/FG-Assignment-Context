@@ -89,11 +89,11 @@ const RecipeCardXsmall = ({
           </h3>
         </div>
       </Link>
-      <div className="absolute top-2 right-2 p-2 flex lg:items-center lg:gap-4">
+      <div className="absolute top-2 right-2 p-2 flex lg:items-center lg:gap-2">
         {!isCategoryPage ? (
           isOnShoppingList(idMeal) ? (
             <MdPlaylistAddCheck
-              className="text-3xl cursor-pointer text-primary hover:text-secondary"
+              className="text-4xl cursor-pointer text-primary hover:text-secondary"
               onClick={() => {
                 handleAddToShoppingListClick();
                 toast.error("Removed from Shopping list");
@@ -101,7 +101,7 @@ const RecipeCardXsmall = ({
             />
           ) : (
             <MdPlaylistAdd
-              className="text-3xl cursor-pointer text-secondary hover:text-primary"
+              className="text-4xl cursor-pointer text-secondary hover:text-primary"
               onClick={() => {
                 handleAddToShoppingListClick();
                 toast.success("Added to Shopping list");

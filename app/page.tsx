@@ -27,7 +27,7 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <LogInWrapper children={undefined} />
+      <LogInWrapper />
       <div className="grid-child-4 min-w-0 min-h-0">
         <img
           src="/apple.png"

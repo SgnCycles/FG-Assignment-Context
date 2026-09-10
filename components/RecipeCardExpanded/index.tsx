@@ -8,6 +8,7 @@ import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { toast } from "react-toastify";
 
 const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
+  
   const { addToShoppingList, removeFromShoppingList, isOnShoppingList } =
     useFavouritesContext()!;
 

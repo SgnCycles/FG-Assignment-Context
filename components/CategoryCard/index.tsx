@@ -13,7 +13,6 @@ const CategoryCard = ({idCategory, strCategory, strCategoryThumb}: FavouriteCate
         <img className="w-full h-full" src={strCategoryThumb} alt={idCategory} />
       </div>
     </Link>
-
   )
 }
 
