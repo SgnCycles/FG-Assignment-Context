@@ -3,6 +3,7 @@ import {
   FavouritesType,
   RecipeXSCardType,
   ShoppingListType,
+  userContextType,
 } from "@/types/types";
 import Link from "next/link";
 import { FaTrashCan } from "react-icons/fa6";
@@ -14,13 +15,14 @@ import {
 } from "react-icons/md";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { usePathname } from "next/navigation";
+import { useUserContext } from "@/context/userContext";
+import { toast } from "react-toastify";
 
 const RecipeCardXsmall = ({
   idMeal,
   strMeal,
   strMealThumb,
   strCategory,
-  ingredients,
 }: RecipeXSCardType) => {
   const {
     getRecipe,
@@ -33,6 +35,7 @@ const RecipeCardXsmall = ({
   } = useFavouritesContext()!;
   const pathname = usePathname();
   const isCategoryPage = pathname.includes("/category/");
+  const { user } = useUserContext() as userContextType;
 
   const handleAddRecipeClick = () => {
     const recipe: FavouritesType = {
@@ -71,7 +74,7 @@ const RecipeCardXsmall = ({
     <div className="flex justify-between mb-4">
       <Link
         className="flex cursor-pointer justify-between"
-        href={`/recipe/${idMeal}`}
+        href={`/${user!.username}/recipe/${idMeal}`}
       >
         <div className="h-30 w-30 m-auto">
           <img
@@ -91,12 +94,18 @@ const RecipeCardXsmall = ({
           isOnShoppingList(idMeal) ? (
             <MdPlaylistAddCheck
               className="text-3xl cursor-pointer text-blue-900 hover:text-yellow-600"
-              onClick={handleAddToShoppingListClick}
+              onClick={() => {
+                handleAddToShoppingListClick();
+                toast.error("Removed from Shopping list");
+              }}
             />
           ) : (
             <MdPlaylistAdd
               className="text-3xl cursor-pointer text-secondary hover:text-primary"
-              onClick={handleAddToShoppingListClick}
+              onClick={() => {
+                handleAddToShoppingListClick();
+                toast.success("Added to Shopping list");
+              }}
             />
           )
         ) : null}
@@ -104,18 +113,27 @@ const RecipeCardXsmall = ({
           isFavourite(idMeal) ? (
             <MdRemoveCircleOutline
               className="text-2xl cursor-pointer text-secondary"
-              onClick={handleAddRecipeClick}
+              onClick={() => {
+                handleAddRecipeClick();
+                toast.error("Recipe removed from Favourites");
+              }}
             />
           ) : (
             <MdAddCircleOutline
               className="text-2xl cursor-pointer text-primary"
-              onClick={handleAddRecipeClick}
+              onClick={() => {
+                handleAddRecipeClick();
+                toast.success("Recipe added to Favourites");
+              }}
             />
           )
         ) : (
           <FaTrashCan
             className="text-2xl cursor-pointer text-secondary hover:text-primary"
-            onClick={() => removeFavourites(idMeal)}
+            onClick={() => {
+              removeFavourites(idMeal);
+              toast.error("Recipe deleted from Favourites");
+            }}
           />
         )}
       </div>

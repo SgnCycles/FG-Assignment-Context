@@ -4,11 +4,11 @@ import {
   FavouriteCategoryType,
   ProfileCardType,
 } from "@/types/types";
+import SaveSettingsButton from "../buttons/SaveSettingsButton";
 
 const ProfileCard = ({ user, categories }: ProfileCardType) => {
   
   const {
-    saveProfileCategorySettings,
     addToFavouriteCategory,
     removeFavouriteCategory,
     isFavouriteCategory,
@@ -75,12 +75,7 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
         </ul>
       </div>
       <div className="profile-settings-button flex justify-end">
-        <button
-          className="save-button mb-2"
-          onClick={saveProfileCategorySettings}
-        >
-          Save
-        </button>
+        <SaveSettingsButton />
       </div>
     </div>
   );

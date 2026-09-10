@@ -45,11 +45,6 @@ export type MealType = {
   combinedIngredients: string[];
 };
 
-export type NavMenuItemsType = {
-  item: string;
-  href: string;
-};
-
 export type MealCategoryType = {
   strCategory: string;
 };
@@ -88,6 +83,7 @@ export type FavouriteRecipeContextType = {
   removeFromShoppingList: (id: string) => void;
   isOnShoppingList: (id: string) => boolean;
   shoppingList: ShoppingListType[];
+  setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListType[]>>;
 };
 
 export type FavouriteCategoriesContextType = {

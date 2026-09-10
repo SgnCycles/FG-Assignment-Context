@@ -13,7 +13,7 @@ const LogInWrapper = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (user) {
-      router.push(`/profile/${user.username}`);
+      router.push(`/${user.username}`);
     }
   }, [user, router]);
 

@@ -1,9 +1,10 @@
 "use client";
+import ClearShoppingListButton from "@/components/buttons/ClearShoppingListButton";
 import ShoppingListCard from "@/components/ShoppingListCard";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 
 const ShoppingListPage = () => {
-
+  
   const { shoppingList } = useFavouritesContext()!;
 
   return (
@@ -17,6 +18,12 @@ const ShoppingListPage = () => {
             <ShoppingListCard recipe={recipe} key={recipe.idMeal} />
           ))}
       </div>
+
+      {shoppingList.length > 0 && (
+        <div className="w-[90%] flex justify-end">
+          <ClearShoppingListButton />
+        </div>
+      )}
     </main>
   );
 };

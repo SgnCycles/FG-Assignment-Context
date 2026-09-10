@@ -24,7 +24,6 @@ export const FavouriteRecipeProvider = ({
 }: {
   children: ReactNode;
 }) => {
-
   const { user } = useUserContext() as userContextType;
   const [recipe, setRecipe] = useState<FullRecipeType | null>(null);
   const [favouriteRecipes, setFavouriteRecipes] = useState<FavouritesType[]>(
@@ -89,6 +88,9 @@ export const FavouriteRecipeProvider = ({
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_ENDPOINT}lookup.php?i=${id}`,
       );
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
       const data = await response.json();
       const receivedRecipe = data.meals[0];
 
@@ -160,6 +162,7 @@ export const FavouriteRecipeProvider = ({
         removeFromShoppingList,
         isOnShoppingList,
         shoppingList,
+        setShoppingList,
       }}
     >
       {children}

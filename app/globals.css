@@ -40,7 +40,7 @@
   @apply absolute top-3.75 -left-10 bg-[#e9b50b] text-black font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-black rounded-[20px] tracking-widest;
 }
 
-.save-button {
+.action-button {
   @apply inline-block py-1 px-5 text-2xl font-bold tracking-widest bg-secondary border-2 border-primary text-primary rounded-xl shadow-[5px_5px_0_#095332] transition-all duration-300 ease-in-out cursor-pointer hover:bg-[#e9b50b] hover:text-secondary hover:border-secondary hover:shadow-[5px_5px_0_#f73333] active:bg-amber-300 active:shadow-none active:translate-y-2 w-40 hover:tracking-[5px]
 }
 

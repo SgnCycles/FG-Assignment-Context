@@ -34,6 +34,9 @@ export const FavouriteCategoryProvider = ({
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_ENDPOINT}categories.php`,
       );
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
       const data = await response.json();
 
       if (data) {
@@ -75,7 +78,9 @@ export const FavouriteCategoryProvider = ({
 
   useEffect(() => {
     if (!user) return;
-    const categoryArray = localStorage.getItem(`favouriteCategories_${user.id}`);
+    const categoryArray = localStorage.getItem(
+      `favouriteCategories_${user.id}`,
+    );
     if (categoryArray) {
       setFavouriteCategories(JSON.parse(categoryArray));
     } else {

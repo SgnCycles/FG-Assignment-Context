@@ -1,6 +1,6 @@
-"use client";
 import { RecipeCardType, FavouritesType } from "@/types/types";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
+import { toast } from "react-toastify";
 
 const FavouriteButton = ({
   idMeal,
@@ -8,7 +8,6 @@ const FavouriteButton = ({
   strMealThumb,
   strCategory,
 }: RecipeCardType) => {
-  
   const { addToFavourites, removeFavourites, isFavourite } =
     useFavouritesContext()!;
 
@@ -28,12 +27,29 @@ const FavouriteButton = ({
   };
 
   return (
-    <button
-      className="save-button"
-      onClick={handleClick}
-    >
-      {isFavourite(idMeal) ? "Remove" : "Save"}
-    </button>
+    <>
+      {isFavourite(idMeal) ? (
+        <button
+          className="action-button"
+          onClick={() => {
+            handleClick();
+            toast.error("Recipe removed from Favourites");
+          }}
+        >
+          Remove
+        </button>
+      ) : (
+        <button
+          className="action-button"
+          onClick={() => {
+            handleClick();
+            toast.success("Recipe added to Favourites");
+          }}
+        >
+          Save
+        </button>
+      )}
+    </>
   );
 };
 

@@ -3,9 +3,10 @@ import { Fugaz_One, Work_Sans, Manrope } from "next/font/google";
 import { UserProvider } from "@/context/userContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import "./globals.css";
+import { ToastContainer } from "react-toastify";
 import { FavouriteRecipeProvider } from "@/context/favouriteRecipeContext";
 import { FavouriteCategoryProvider } from "@/context/favouriteCategoriesContext";
+import "./globals.css";
 
 const fugaz_one = Fugaz_One({
   variable: "--font-fugaz-one",
@@ -41,6 +42,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col m-0 bg-background">
         <UserProvider>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <FavouriteCategoryProvider>
             <FavouriteRecipeProvider>
               <Header />

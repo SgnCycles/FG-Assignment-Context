@@ -1,10 +1,14 @@
-import { FullRecipeType, ShoppingListType } from "@/types/types";
-import FavouriteButton from "../FavouriteButton";
+import {
+  FavouritesType,
+  FullRecipeType,
+  ShoppingListType,
+} from "@/types/types";
+import FavouriteButton from "../buttons/FavouriteButton";
 import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
+import { toast } from "react-toastify";
 
 const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
-
   const { addToShoppingList, removeFromShoppingList, isOnShoppingList } =
     useFavouritesContext()!;
 
@@ -52,13 +56,19 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         <div className="absolute top-1 right-1">
           {isOnShoppingList(recipe.idMeal) ? (
             <MdPlaylistAddCheck
-              className="text-2xl cursor-pointer"
-              onClick={handleShoppingListClick}
+              className="text-3xl cursor-pointer hover:border-2 hover:rounded-full"
+              onClick={() => {
+                handleShoppingListClick();
+                toast.error("Removed from Shopping list");
+              }}
             />
           ) : (
             <MdPlaylistAdd
-              className="text-2xl cursor-pointer"
-              onClick={handleShoppingListClick}
+              className="text-3xl cursor-pointer text-secondary hover:border-2 hover:rounded-full"
+              onClick={() => {
+                handleShoppingListClick();
+                toast.success("Added to Shopping list");
+              }}
             />
           )}
         </div>

@@ -1,10 +1,11 @@
-import { ShoppingListType } from "@/types/types";
+import { FavouriteRecipeContextType, ShoppingListType } from "@/types/types";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { FaTrashCan } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const ShoppingListCard = ({ recipe }: { recipe: ShoppingListType }) => {
 
-  const { removeFromShoppingList } = useFavouritesContext()!;
+  const { removeFromShoppingList } = useFavouritesContext() as FavouriteRecipeContextType;
 
   return (
     <div className="shopping-list mb-4 gap-x-2 gap-y-2 text-primary bg-primary relative">
@@ -36,7 +37,10 @@ const ShoppingListCard = ({ recipe }: { recipe: ShoppingListType }) => {
       </div>
       <FaTrashCan
         className="text-2xl cursor-pointer text-secondary hover:text-yellow-400 absolute top-4 right-4"
-        onClick={() => removeFromShoppingList(recipe.idMeal)}
+        onClick={() => {
+          removeFromShoppingList(recipe.idMeal);
+          toast.error("Removed from Shopping list");
+        }}
       />
     </div>
   );

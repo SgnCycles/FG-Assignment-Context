@@ -11,12 +11,15 @@ const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleUsername = (e: { target: { value: SetStateAction<string> } }) => {
+    setErrorMessage("");
     setUsername(e.target.value);
   };
 
   const handlePassword = (e: { target: { value: SetStateAction<string> } }) => {
+    setErrorMessage("");
     setPassword(e.target.value);
   };
 
@@ -26,14 +29,17 @@ const Login = () => {
       (item) => item.username === username && item.password === password,
     );
 
-    if (loggedInUser) {
-      setUser(loggedInUser);
-      setIsLoggedIn(true);
+    if (!loggedInUser) {
+      setErrorMessage("Wrong Username or password");
+      return;
     }
+    setUser(loggedInUser);
+    setIsLoggedIn(true);
+    setErrorMessage("");
   };
 
   return (
-    <form className="flex flex-col justify-center items-center gap-8 xl:justify-evenly h-full grid-child-3">
+    <form className="flex flex-col justify-center items-center xl:justify-evenly h-full grid-child-3">
       <div className="input-container flex justify-center w-[90%]">
         <label htmlFor="username" className="label font-work-sans">
           Username:
@@ -73,8 +79,9 @@ const Login = () => {
           )}
         </div>
       </div>
+      <div className="h-5 text-secondary font-bold">{errorMessage && <p>{errorMessage}</p>}</div>
       <div className="flex justify-center">
-        <button className="save-button" onClick={handleLogin}>
+        <button className="action-button" onClick={handleLogin}>
           Log In
         </button>
       </div>
