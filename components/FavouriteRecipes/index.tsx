@@ -7,7 +7,7 @@ const FavouriteRecipes = () => {
   const { favouriteRecipes } = useFavouritesContext()!;
 
   return (
-    <div className="w-[90%] m-auto">
+    <div className="w-full flex justify-center flex-wrap">
       {favouriteRecipes.map((recipe) => (
         <RecipeCardXsmall {...recipe} key={recipe.idMeal} />
       ))}

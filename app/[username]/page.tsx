@@ -57,11 +57,11 @@ const ProfilePage = () => {
   }, [user]);
 
   return (
-    <main className="flex grow max-h-screen items-center justify-around">
+    <main className="flex flex-col lg:flex-row grow max-h-screen items-center justify-evenly lg:justify-around text-font-primary">
       {user && (
-        <div className="h-full w-[50%]">
-          <div className="h-full flex flex-col justify-evenly font-manrope font-bold text-6xl text-heading text-shadow-[2px_2px_rgb(255_165_0)]">
-            <p className="text-7xl">Hi, {user.name}!</p>
+        <div className="h-full w-full lg:w-[50%] pl-4">
+          <div className="h-full flex flex-col justify-evenly font-manrope font-bold text-4xl lg:text-6xl text-shadow-[1px_1px_rgb(255_165_0)]">
+            <p className="text-5xl lg:text-7xl">Hi, {user.name}!</p>
             <p>Here is a recipe to try today.</p>
             <p>Knives out!</p>
           </div>

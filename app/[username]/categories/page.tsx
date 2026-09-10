@@ -11,8 +11,8 @@ const CategoriesPage = () => {
     useFavouriteCategoryContext() as FavouriteCategoriesContextType;
 
   return (
-    <main className="grow flex flex-col justify-start items-center gap-4 w-full pb-8 mt-8">
-      <h1 className="w-full font-bold text-5xl text-start text-heading font-manrope mb-8 pl-8">
+    <main className="grow flex flex-col justify-start items-center gap-4 w-full pb-8 mt-8 text-font-primary">
+      <h1 className="w-full font-bold text-5xl text-start font-manrope mb-8 pl-8 text-shadow-[1px_1px_rgb(255_165_0)]">
         Favourite Categories
       </h1>
       <div className="category-grid grid w-[90%] gap-4">

@@ -8,7 +8,7 @@ const RecipeCardSmall = ({ recipe }: { recipe: FullRecipeType }) => {
   
   return (
     <Link
-      className="relative bg-contain bg-center bg-no-repeat w-80 h-80 border-4 border-primary rounded-full"
+      className="relative bg-contain bg-center bg-no-repeat w-60 h-60 lg:w-80 lg:h-80 border-4 border-primary rounded-full"
       style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
       href={`/${user!.username}/recipe/${recipe.idMeal}`}
     >
@@ -20,7 +20,7 @@ const RecipeCardSmall = ({ recipe }: { recipe: FullRecipeType }) => {
               className="absolute text-xl"
               key={index}
               style={{
-                transform: `rotate(${angle}deg) translateY(-190px)`,
+                transform: `rotate(${angle}deg) translateY(-140px)`,
               }}
             >
               {char}

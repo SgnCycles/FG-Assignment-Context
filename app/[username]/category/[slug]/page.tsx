@@ -13,17 +13,17 @@ const CategoryPage = async ({ params }: { params: { slug: string } }) => {
       throw new Error(`API error: ${response.status}`);
     }
     const data = await response.json();
-    recipes = data.meals;
+    recipes = data.meals ?? null;
   } catch (error) {
     console.log(error);
   }
 
   return (
-    <main className="grow h-full flex flex-col justify-center w-full pb-8 mt-8">
-      <h1 className="font-bold text-5xl text-start text-heading font-manrope mb-8 pl-8">
+    <main className="grow h-full flex flex-col justify-center w-full pb-8 mt-8 text-font-primary">
+      <h1 className="font-bold text-5xl text-start font-manrope mb-8 pl-8">
         {slug} recipes
       </h1>
-      <div className="w-[90%] m-auto">
+      <div className="w-full flex flex-col items-center">
         {recipes &&
           recipes.map((recipe) => (
             <RecipeCardXsmall key={recipe.idMeal} {...recipe} />

@@ -1,5 +1,4 @@
 import {
-  FavouritesType,
   FullRecipeType,
   ShoppingListType,
 } from "@/types/types";
@@ -28,14 +27,14 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
   };
 
   return (
-    <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-primary">
+    <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-font-primary">
       <div className="meal-name font-manrope bg-primary text-font-secondary p-8">
-        <h3 className="font-bold text-5xl text-start mb-2">{recipe.strMeal}</h3>
-        <p className="font-bold text-xl text-start">
+        <h3 className="font-bold text-3xl lg:text-5xl text-start mb-2">{recipe.strMeal}</h3>
+        <p className="font-bold text-md lg:text-xl text-start">
           Country of Origin: {recipe.strCountry}
         </p>
       </div>
-      <div className="meal-image h-75 w-75 border-2 border-primary">
+      <div className="meal-image w-full h-full lg:h-75 lg:w-75 border-2 border-primary">
         <img
           className="w-full h-full"
           src={recipe.strMealThumb}
@@ -43,7 +42,7 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         ></img>
       </div>
       <div className="meal-ingredients p-8 border-2 border-primary relative bg-[#F8A436]">
-        <h3 className="font-work-sans font-bold tracking-widest text-lg">
+        <h3 className="font-work-sans font-bold tracking-widest text-lg pb-4 lg:pb-0 ">
           Ingredients:
         </h3>
         <div className="flex flex-col flex-wrap w-full">
@@ -74,12 +73,12 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         </div>
       </div>
       <div className="meal-instructions p-8 border-2 border-primary bg-orange-200">
-        <h3 className="font-work-sans font-bold tracking-widest text-lg">
+        <h3 className="font-work-sans font-bold tracking-widest text-lg pb-4 lg:pb-0">
           Instructions:
         </h3>
         <div>{recipe.strInstructions}</div>
       </div>
-      <div className="favourite-button flex justify-end">
+      <div className="favourite-button flex justify-end mt-4 lg:mt-0">
         <FavouriteButton
           idMeal={recipe.idMeal}
           strMeal={recipe.strMeal}

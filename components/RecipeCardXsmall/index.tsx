@@ -71,29 +71,29 @@ const RecipeCardXsmall = ({
   };
 
   return (
-    <div className="flex justify-between mb-4">
+    <div className="relative flex flex-col lg:flex-row justify-between mb-4 border-2 border-primary bg-accent text-font-primary w-[90%]">
       <Link
-        className="flex cursor-pointer justify-between"
+        className="flex flex-col lg:flex-row cursor-pointer justify-between"
         href={`/${user!.username}/recipe/${idMeal}`}
       >
-        <div className="h-30 w-30 m-auto">
+        <div className="h-30 w-30 flex flex-start p-2">
           <img
             className="h-full w-full rounded-full border-4 border-primary"
             src={strMealThumb}
             alt={strMealThumb}
           />
         </div>
-        <div className="flex items-center grow pl-8">
-          <h3 className="text-2xl text-start text-heading font-work-sans font-medium">
+        <div className="flex items-center grow px-4 pb-2 lg:pl-8">
+          <h3 className="text-3xl text-start text-heading font-work-sans font-medium">
             {strMeal}
           </h3>
         </div>
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="absolute top-2 right-2 p-2 flex lg:items-center lg:gap-4">
         {!isCategoryPage ? (
           isOnShoppingList(idMeal) ? (
             <MdPlaylistAddCheck
-              className="text-3xl cursor-pointer text-blue-900 hover:text-yellow-600"
+              className="text-3xl cursor-pointer text-primary hover:text-secondary"
               onClick={() => {
                 handleAddToShoppingListClick();
                 toast.error("Removed from Shopping list");
@@ -112,7 +112,7 @@ const RecipeCardXsmall = ({
         {isCategoryPage ? (
           isFavourite(idMeal) ? (
             <MdRemoveCircleOutline
-              className="text-2xl cursor-pointer text-secondary"
+              className="text-4xl cursor-pointer text-secondary"
               onClick={() => {
                 handleAddRecipeClick();
                 toast.error("Recipe removed from Favourites");
@@ -120,7 +120,7 @@ const RecipeCardXsmall = ({
             />
           ) : (
             <MdAddCircleOutline
-              className="text-2xl cursor-pointer text-primary"
+              className="text-4xl cursor-pointer text-primary"
               onClick={() => {
                 handleAddRecipeClick();
                 toast.success("Recipe added to Favourites");
@@ -129,7 +129,7 @@ const RecipeCardXsmall = ({
           )
         ) : (
           <FaTrashCan
-            className="text-2xl cursor-pointer text-secondary hover:text-primary"
+            className="text-3xl cursor-pointer text-secondary hover:text-primary"
             onClick={() => {
               removeFavourites(idMeal);
               toast.error("Recipe deleted from Favourites");
