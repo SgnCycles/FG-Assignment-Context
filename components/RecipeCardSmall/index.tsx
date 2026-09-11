@@ -24,6 +24,7 @@ const RecipeCardSmall = ({
   strMealThumb,
   strCategory,
 }: RecipeSmallCardType) => {
+  
   const {
     getRecipe,
     removeFavourites,
@@ -71,7 +72,7 @@ const RecipeCardSmall = ({
   };
 
   return (
-    <div className="relative flex flex-col lg:flex-row justify-between mb-4 border-2 border-primary bg-accent text-font-primary w-[90%] pl-4">
+    <div className="recipe-card relative flex flex-col lg:flex-row justify-between mb-4 border-2 border-primary bg-accent text-font-primary w-[90%] pl-4">
       <Link
         className="flex flex-col lg:flex-row cursor-pointer justify-between"
         href={`/${user?.username}/recipe/${idMeal}`}

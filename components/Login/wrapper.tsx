@@ -19,9 +19,7 @@ const LogInWrapper = () => {
     return null;
   }
 
-  return (
-    <Login />
-  );
+  return <Login />;
 };
 
 export default LogInWrapper;

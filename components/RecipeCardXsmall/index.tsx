@@ -8,7 +8,7 @@ const RecipeCardXSmall = ({ recipe }: { recipe: FullRecipeType }) => {
 
   return (
     <Link
-      className="relative bg-contain bg-center bg-no-repeat w-50 h-50 md:w-60 md:h-60 lg:w-80 lg:h-80 border-4 border-primary rounded-full mr-2 mb-4 lg:mr-0 lg:mb-0"
+      className="recipe-xsmall relative bg-contain bg-center bg-no-repeat w-50 h-50 md:w-60 md:h-60 lg:w-80 lg:h-80 border-4 border-primary rounded-full mr-2 mb-4 lg:mr-0 lg:mb-0"
       style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
       href={`/${user!.username}/recipe/${recipe.idMeal}`}
     >

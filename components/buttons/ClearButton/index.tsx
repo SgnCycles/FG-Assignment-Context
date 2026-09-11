@@ -2,7 +2,6 @@ import { ClearButtonType } from "@/types/types";
 import { toast } from "react-toastify";
 
 const ClearButton = ({name, onClickFunction}: ClearButtonType) => {
-
   return (
     <button
       className="action-button mb-2"

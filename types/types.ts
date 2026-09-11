@@ -100,4 +100,8 @@ export type FavouriteCategoriesContextType = {
 export type ClearButtonType = {
   name: string;
   onClickFunction: () => void;
-}
+};
+
+export type CategoryRecipeCardAnimationType = {
+  children: React.ReactNode;
+};

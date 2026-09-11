@@ -7,6 +7,7 @@ import {
 import SaveSettingsButton from "../buttons/SaveSettingsButton";
 
 const ProfileCard = ({ user, categories }: ProfileCardType) => {
+  
   const {
     addToFavouriteCategory,
     removeFavouriteCategory,
