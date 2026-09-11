@@ -27,8 +27,6 @@ export const FavouriteCategoryProvider = ({
     FavouriteCategoryType[]
   >([]);
 
-  const [pageHasLoaded, setPageHasLoaded] = useState(false);
-
   const fetchAvailableCategories = async () => {
     try {
       const response = await fetch(
@@ -86,7 +84,6 @@ export const FavouriteCategoryProvider = ({
     } else {
       setFavouriteCategories(user.categories || []);
     }
-    setPageHasLoaded(true);
   }, [user]);
 
   return (
