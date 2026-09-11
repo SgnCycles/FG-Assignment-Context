@@ -30,7 +30,7 @@ const Login = () => {
     );
 
     if (!loggedInUser) {
-      setErrorMessage("Wrong Username or password");
+      setErrorMessage("Wrong Username or Password");
       return;
     }
     setUser(loggedInUser);

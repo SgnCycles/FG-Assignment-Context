@@ -15,7 +15,7 @@ const CategoriesPage = () => {
       <h1 className="w-full font-bold text-5xl text-start font-manrope mb-8 pl-8 text-shadow-[1px_1px_rgb(255_165_0)]">
         Favourite Categories
       </h1>
-      <div className="category-grid grid w-[90%] gap-4">
+      <div className="category-grid grid auto-rows-50 w-[90%] gap-4">
         {user &&
           favouriteCategories &&
           favouriteCategories.map((category) => (

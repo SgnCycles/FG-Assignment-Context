@@ -85,6 +85,7 @@ export type FavouriteRecipeContextType = {
   isOnShoppingList: (id: string) => boolean;
   shoppingList: ShoppingListType[];
   setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListType[]>>;
+  setFavouriteRecipes: React.Dispatch<React.SetStateAction<FavouritesType[]>>;
 };
 
 export type FavouriteCategoriesContextType = {
@@ -95,3 +96,8 @@ export type FavouriteCategoriesContextType = {
   isFavouriteCategory: (id: string) => boolean;
   saveProfileCategorySettings: () => void;
 };
+
+export type ClearButtonType = {
+  name: string;
+  onClickFunction: () => void;
+}

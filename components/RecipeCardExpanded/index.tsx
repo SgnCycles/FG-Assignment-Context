@@ -1,14 +1,11 @@
-import {
-  FullRecipeType,
-  ShoppingListType,
-} from "@/types/types";
+import { FullRecipeType, ShoppingListType } from "@/types/types";
 import FavouriteButton from "../buttons/FavouriteButton";
 import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { toast } from "react-toastify";
 
 const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
-  
+
   const { addToShoppingList, removeFromShoppingList, isOnShoppingList } =
     useFavouritesContext()!;
 
@@ -28,9 +25,11 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
   };
 
   return (
-    <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-font-primary">
+    <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-font-primary text-xl">
       <div className="meal-name font-manrope bg-primary text-font-secondary p-8">
-        <h3 className="font-bold text-3xl lg:text-5xl text-start mb-2">{recipe.strMeal}</h3>
+        <h2 className="font-bold text-4xl lg:text-5xl text-start mb-2">
+          {recipe.strMeal}
+        </h2>
         <p className="font-bold text-md lg:text-xl text-start">
           Country of Origin: {recipe.strCountry}
         </p>
@@ -43,11 +42,11 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         ></img>
       </div>
       <div className="meal-ingredients p-8 border-2 border-primary relative bg-[#F8A436]">
-        <h3 className="font-work-sans font-bold tracking-widest text-lg pb-4 lg:pb-0 ">
+        <h3 className="font-work-sans font-bold tracking-widest text-2xl pb-4 lg:pb-0 mb-2 lg:mb-4">
           Ingredients:
         </h3>
         <div className="flex flex-col flex-wrap w-full">
-          <ul className="">
+          <ul className="flex flex-col lg:grid lg:grid-flow-col lg:grid-rows-[repeat(3,auto)] lg:auto-cols-max lg:gap-2.5 lg:gap-x-7.5">
             {recipe.ingredients.map((ingredient: string, index: number) => (
               <li key={index}>{ingredient}</li>
             ))}
@@ -74,7 +73,7 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         </div>
       </div>
       <div className="meal-instructions p-8 border-2 border-primary bg-orange-200">
-        <h3 className="font-work-sans font-bold tracking-widest text-lg pb-4 lg:pb-0">
+        <h3 className="font-work-sans font-bold tracking-widest text-2xl pb-4 lg:pb-0 mb-2 lg:mb-4">
           Instructions:
         </h3>
         <div>{recipe.strInstructions}</div>

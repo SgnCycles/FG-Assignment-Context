@@ -7,7 +7,6 @@ import {
 import SaveSettingsButton from "../buttons/SaveSettingsButton";
 
 const ProfileCard = ({ user, categories }: ProfileCardType) => {
-  
   const {
     addToFavouriteCategory,
     removeFavouriteCategory,
@@ -23,10 +22,7 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
   };
 
   return (
-    <div className="profile-settings w-[90%] h-full grid font-manrope text-font-primary gap-x-2 gap-y-2 xl:m-auto">
-      <div className="profile-settings-header flex justify-center items-center bg-primary text-font-secondary">
-        <h1 className="font-bold text-3xl text-center">Profile Settings</h1>
-      </div>
+    <div className="profile-settings w-[90%] h-full grid font-manrope text-font-primary gap-x-2 gap-y-2 xl:m-auto text-2xl">
       <div className="profile-settings-image h-[full] w-[full] p-4 bg-primary text-font-secondary">
         <svg
           className="block h-full w-full"
@@ -39,22 +35,25 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
           ></path>
         </svg>
       </div>
-      <div className="profile-settings-name flex justify-start items-center text-xl bg-primary text-font-secondary">
+      <div className="profile-settings-header flex justify-center items-center bg-primary text-font-secondary">
+        <h1 className="font-bold text-3xl text-center">Profile Settings</h1>
+      </div>
+      <div className="profile-settings-name flex justify-start items-center bg-primary text-font-secondary">
         <h3 className="p-8 pr-2 font-bold tracking-widest">Name:</h3>
         <p>{user.name}</p>
       </div>
-      <div className="childprofile-settings-username p-8 flex justify-start items-center text-xl bg-primary text-font-secondary">
+      <div className="childprofile-settings-username p-8 flex justify-start items-center bg-primary text-font-secondary">
         <h3 className="pr-2 font-bold tracking-widest">Username:</h3>
         <p>{user.username}</p>
       </div>
       <div className="profile-settings-categories p-8 bg-accent">
-        <h3 className="font-bold tracking-widest text-xl pb-2">
+        <h3 className="font-bold tracking-widest w-full text-start lg:ml-2 pb-4">
           Favourite Categories:
         </h3>
         <ul className="flex flex-wrap">
           {categories &&
             categories.map((item) => (
-              <li key={item.idCategory} className="p-2">
+              <li key={item.idCategory} className="p-2 text-xl">
                 <input
                   type="checkbox"
                   onChange={() => handleAddCategoryClick(item)}
@@ -74,7 +73,7 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
             ))}
         </ul>
       </div>
-      <div className="profile-settings-button flex justify-end mt-4">
+      <div className="profile-settings-button flex justify-end mt-4 h-12.5">
         <SaveSettingsButton />
       </div>
     </div>

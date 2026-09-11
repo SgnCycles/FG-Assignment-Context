@@ -71,25 +71,25 @@ const RecipeCardSmall = ({
   };
 
   return (
-    <div className="relative flex flex-col lg:flex-row justify-between mb-4 border-2 border-primary bg-accent text-font-primary w-[90%]">
+    <div className="relative flex flex-col lg:flex-row justify-between mb-4 border-2 border-primary bg-accent text-font-primary w-[90%] pl-4">
       <Link
         className="flex flex-col lg:flex-row cursor-pointer justify-between"
-        href={`/${user!.username}/recipe/${idMeal}`}
+        href={`/${user?.username}/recipe/${idMeal}`}
       >
-        <div className="h-30 w-30 flex flex-start p-2">
+        <div className="h-30 w-30 flex flex-start p-2 my-2">
           <img
             className="h-full w-full rounded-full border-4 border-primary"
             src={strMealThumb}
             alt={strMealThumb}
           />
         </div>
-        <div className="flex items-center grow px-4 pb-2 lg:pl-8">
-          <h3 className="text-3xl text-start text-heading font-work-sans font-medium">
+        <div className="flex items-center grow px-4 py-4 lg:pl-8">
+          <h2 className="text-3xl text-start text-heading font-work-sans font-medium">
             {strMeal}
-          </h3>
+          </h2>
         </div>
       </Link>
-      <div className="absolute top-2 right-2 p-2 flex lg:items-center lg:gap-2">
+      <div className="absolute top-0 right-0 p-2 flex lg:items-center lg:gap-2">
         {!isCategoryPage ? (
           isOnShoppingList(idMeal) ? (
             <MdPlaylistAddCheck

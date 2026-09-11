@@ -1,11 +1,17 @@
 "use client";
-import ClearShoppingListButton from "@/components/buttons/ClearShoppingListButton";
+import ClearButton from "@/components/buttons/ClearButton";
 import ShoppingListCard from "@/components/ShoppingListCard";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
+import { FavouriteRecipeContextType } from "@/types/types";
 
 const ShoppingListPage = () => {
   
-  const { shoppingList } = useFavouritesContext()!;
+  const { shoppingList, setShoppingList } =
+    useFavouritesContext()! as FavouriteRecipeContextType;
+
+  const handleClearClick = () => {
+    setShoppingList([]);
+  };
 
   return (
     <main className="grow h-full flex flex-col justify-start gap-4 w-full pb-8 mt-8 items-center">
@@ -18,10 +24,9 @@ const ShoppingListPage = () => {
             <ShoppingListCard recipe={recipe} key={recipe.idMeal} />
           ))}
       </div>
-
       {shoppingList.length > 0 && (
         <div className="w-[90%] flex justify-end">
-          <ClearShoppingListButton />
+          <ClearButton name="Shopping" onClickFunction={handleClearClick} />
         </div>
       )}
     </main>

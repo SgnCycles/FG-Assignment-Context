@@ -153,6 +153,7 @@ export const FavouriteRecipeProvider = ({
     <FavouriteRecipeContext.Provider
       value={{
         favouriteRecipes,
+        setFavouriteRecipes,
         addToFavourites,
         removeFavourites,
         isFavourite,

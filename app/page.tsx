@@ -2,10 +2,10 @@ import LogInWrapper from "@/components/Login/wrapper";
 
 export default function Home() {
   return (
-    <main className="h-[calc(100dvh-5rem-4rem)] lg:h-[calc(100dvh-10rem-4rem)] grid pb-3.75 homepage-grid gap-3 w-[90%] place-self-center">
-      <div className="border-2 border-primary grid-children-wrapper hidden md:block">
+    <main className="homepage-grid h-[calc(100dvh-5rem-4rem)] lg:h-[calc(100dvh-10rem-4rem)] grid grid-cols-3 grid-rows-2 max-w-375 max-h-375 pb-3.75 gap-3 w-[90%] place-self-center">
+      <div className="border-2 border-primary grid-children-wrapper hidden xl:block">
         <svg
-          className="grid-children"
+          className="grid-children max-h-auto"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 480 480"
         >
@@ -27,7 +27,7 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <div className="grid-children-wrapper col-span-3 md:col-span-2 xl:col-span-1">
+      <div className="grid-children-wrapper col-span-3 xl:col-span-1">
         <LogInWrapper />
       </div>
       <div className="grid-children-wrapper">
