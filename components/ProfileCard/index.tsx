@@ -23,7 +23,7 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
   };
 
   return (
-    <div className="profile-settings w-[90%] grid font-manrope text-font-primary gap-x-2 gap-y-2 mt-auto">
+    <div className="profile-settings w-[90%] h-full grid font-manrope text-font-primary gap-x-2 gap-y-2 xl:m-auto">
       <div className="profile-settings-header flex justify-center items-center bg-primary text-font-secondary">
         <h1 className="font-bold text-3xl text-center">Profile Settings</h1>
       </div>

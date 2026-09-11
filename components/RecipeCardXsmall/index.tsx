@@ -1,144 +1,32 @@
-"use client";
-import {
-  FavouritesType,
-  RecipeXSCardType,
-  ShoppingListType,
-  userContextType,
-} from "@/types/types";
-import Link from "next/link";
-import { FaTrashCan } from "react-icons/fa6";
-import {
-  MdAddCircleOutline,
-  MdPlaylistAdd,
-  MdPlaylistAddCheck,
-  MdRemoveCircleOutline,
-} from "react-icons/md";
-import { useFavouritesContext } from "@/context/favouriteRecipeContext";
-import { usePathname } from "next/navigation";
 import { useUserContext } from "@/context/userContext";
-import { toast } from "react-toastify";
+import { FullRecipeType, userContextType } from "@/types/types";
+import Link from "next/link";
 
-const RecipeCardXsmall = ({
-  idMeal,
-  strMeal,
-  strMealThumb,
-  strCategory,
-}: RecipeXSCardType) => {
-  const {
-    getRecipe,
-    removeFavourites,
-    addToFavourites,
-    isFavourite,
-    addToShoppingList,
-    removeFromShoppingList,
-    isOnShoppingList,
-  } = useFavouritesContext()!;
-  const pathname = usePathname();
-  const isCategoryPage = pathname.includes("/category/");
+const RecipeCardXSmall = ({ recipe }: { recipe: FullRecipeType }) => {
+  
   const { user } = useUserContext() as userContextType;
 
-  const handleAddRecipeClick = () => {
-    const recipe: FavouritesType = {
-      idMeal,
-      strMeal,
-      strMealThumb,
-      strCategory,
-    };
-    if (isFavourite(idMeal)) {
-      removeFavourites(idMeal);
-    } else {
-      addToFavourites(recipe);
-    }
-  };
-
-  const handleAddToShoppingListClick = async () => {
-    if (isOnShoppingList(idMeal)) {
-      removeFromShoppingList(idMeal);
-      return;
-    }
-    const fullRecipe = await getRecipe(idMeal);
-
-    if (!fullRecipe) return;
-
-    const recipeForShoppingList: ShoppingListType = {
-      idMeal: fullRecipe.idMeal,
-      strMeal: fullRecipe.strMeal,
-      strMealThumb: fullRecipe.strMealThumb,
-      strCategory: fullRecipe.strCategory,
-      combinedIngredients: fullRecipe.ingredients,
-    };
-    addToShoppingList(recipeForShoppingList);
-  };
-
   return (
-    <div className="relative flex flex-col lg:flex-row justify-between mb-4 border-2 border-primary bg-accent text-font-primary w-[90%]">
-      <Link
-        className="flex flex-col lg:flex-row cursor-pointer justify-between"
-        href={`/${user!.username}/recipe/${idMeal}`}
+    <Link
+      className="relative bg-contain bg-center bg-no-repeat w-50 h-50 md:w-60 md:h-60 lg:w-80 lg:h-80 border-4 border-primary rounded-full"
+      style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
+      href={`/${user!.username}/recipe/${recipe.idMeal}`}
+    >
+      <svg
+        className="absolute -inset-8.75 overflow-visible w-[calc(100%+70px)] h-[calc(100%+70px)]"
+        viewBox="0 0 500 500"
       >
-        <div className="h-30 w-30 flex flex-start p-2">
-          <img
-            className="h-full w-full rounded-full border-4 border-primary"
-            src={strMealThumb}
-            alt={strMealThumb}
-          />
-        </div>
-        <div className="flex items-center grow px-4 pb-2 lg:pl-8">
-          <h3 className="text-3xl text-start text-heading font-work-sans font-medium">
-            {strMeal}
-          </h3>
-        </div>
-      </Link>
-      <div className="absolute top-2 right-2 p-2 flex lg:items-center lg:gap-2">
-        {!isCategoryPage ? (
-          isOnShoppingList(idMeal) ? (
-            <MdPlaylistAddCheck
-              className="text-4xl cursor-pointer text-primary hover:text-secondary"
-              onClick={() => {
-                handleAddToShoppingListClick();
-                toast.error("Removed from Shopping list");
-              }}
-            />
-          ) : (
-            <MdPlaylistAdd
-              className="text-4xl cursor-pointer text-secondary hover:text-primary"
-              onClick={() => {
-                handleAddToShoppingListClick();
-                toast.success("Added to Shopping list");
-              }}
-            />
-          )
-        ) : null}
-        {isCategoryPage ? (
-          isFavourite(idMeal) ? (
-            <MdRemoveCircleOutline
-              className="text-4xl cursor-pointer text-secondary"
-              onClick={() => {
-                handleAddRecipeClick();
-                toast.error("Recipe removed from Favourites");
-              }}
-            />
-          ) : (
-            <MdAddCircleOutline
-              className="text-4xl cursor-pointer text-primary"
-              onClick={() => {
-                handleAddRecipeClick();
-                toast.success("Recipe added to Favourites");
-              }}
-            />
-          )
-        ) : (
-          <FaTrashCan
-            className="text-3xl cursor-pointer text-secondary hover:text-primary"
-            onClick={() => {
-              removeFavourites(idMeal);
-              toast.error("Recipe deleted from Favourites");
-            }}
-          />
-        )}
-      </div>
-    </div>
+        <path
+          id="textcircle"
+          fill="none"
+          d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
+        ></path>
+        <text dy="-30" fill="#de5c38" className="font-fugaz-one text-4xl">
+          <textPath xlinkHref="#textcircle">{recipe.strMeal}</textPath>
+        </text>
+      </svg>
+    </Link>
   );
 };
 
-export default RecipeCardXsmall;
+export default RecipeCardXSmall;

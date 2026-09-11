@@ -14,6 +14,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   
   const [user, setUser] = useState<UserType | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [pageIsLoading, setPageIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const loggedInUserState = localStorage.getItem("login");
@@ -26,6 +27,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
     }
+    setPageIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
+    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn, pageIsLoading }}>
       {children}
     </UserContext.Provider>
   );

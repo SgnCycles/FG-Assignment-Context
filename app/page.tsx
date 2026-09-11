@@ -3,7 +3,7 @@ import LogInWrapper from "@/components/Login/wrapper";
 export default function Home() {
   return (
     <main className="h-[calc(100dvh-5rem-4rem)] lg:h-[calc(100dvh-10rem-4rem)] grid pb-3.75 homepage-grid gap-3 w-[90%] place-self-center">
-      <div className="grid-child-1 border-2">
+      <div className="border-2 border-primary grid-children-wrapper hidden md:block">
         <svg
           className="grid-children"
           xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +15,7 @@ export default function Home() {
           </g>
         </svg>
       </div>
-      <div className="grid-child-2 min-w-0 min-h-0">
+      <div className="grid-children-wrapper hidden xl:block">
         <svg
           className="grid-children"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,14 +27,16 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <LogInWrapper />
-      <div className="grid-child-4 min-w-0 min-h-0">
+      <div className="grid-children-wrapper col-span-3 md:col-span-2 xl:col-span-1">
+        <LogInWrapper />
+      </div>
+      <div className="grid-children-wrapper">
         <img
           src="/apple.png"
           className="h-full w-auto object-contain grid-children"
         ></img>
       </div>
-      <div className="grid-child-5 min-w-0 min-h-0">
+      <div className="grid-children-wrapper">
         <svg
           className="grid-children"
           xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +48,9 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <div className="grid-child-6 min-w-0 min-h-0">
+      <div className="grid-children-wrapper">
         <svg
-          className="grid-children border-2"
+          className="grid-children border-2  border-primary"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 480 480"
         >

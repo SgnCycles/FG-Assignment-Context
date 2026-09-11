@@ -1,33 +1,26 @@
 "use client";
 import { userContextType } from "@/types/types";
 import { useUserContext } from "@/context/userContext";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import Login from ".";
-import NavMenu from "../NavMenu";
 import { useRouter } from "next/navigation";
 
-const LogInWrapper = ({ children }: { children?: ReactNode }) => {
-  
+const LogInWrapper = () => {
   const router = useRouter();
-  const { user } = useUserContext() as userContextType;
+  const { user, pageIsLoading } = useUserContext() as userContextType;
 
   useEffect(() => {
-    if (user) {
+    if (!pageIsLoading && user) {
       router.push(`/${user.username}`);
     }
-  }, [user, router]);
+  }, [user, pageIsLoading, router]);
+
+  if (pageIsLoading || user) {
+    return null;
+  }
 
   return (
-    <div>
-      {user ? (
-        <>
-          <NavMenu />
-          <div>{children}</div>
-        </>
-      ) : (
-        <Login />
-      )}
-    </div>
+    <Login />
   );
 };
 

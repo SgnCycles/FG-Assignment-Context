@@ -6,7 +6,7 @@ import { userContextType } from "@/types/types";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Login = () => {
-
+  
   const { setUser, setIsLoggedIn } = useUserContext() as userContextType;
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -39,51 +39,55 @@ const Login = () => {
   };
 
   return (
-    <form className="flex flex-col justify-center items-center xl:justify-evenly h-full grid-child-3">
-      <div className="input-container flex justify-center w-[90%]">
-        <label htmlFor="username" className="label font-work-sans">
-          Username:
-        </label>
-        <input
-          type="text"
-          id="username"
-          placeholder="Enter Username"
-          onChange={handleUsername}
-          value={username}
-          className="input-username"
-        />
-      </div>
-      <div className="input-container flex justify-center w-[90%]">
-        <label htmlFor="password" className="label font-work-sans">
-          Password:
-        </label>
-        <div className="password-input relative w-full flex flex-end">
+    <form className="flex flex-col h-full justify-evenly items-center">
+      <div className="h-full w-full flex flex-col justify-evenly items-center">
+        <div className="input-container flex justify-center">
+          <label htmlFor="username" className="label font-work-sans">
+            Username:
+          </label>
           <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            placeholder="Enter Password"
-            onChange={handlePassword}
-            value={password}
-            className="input-password relative"
+            type="text"
+            id="username"
+            placeholder="Enter Username"
+            onChange={handleUsername}
+            value={username}
+            className="input-username"
           />
-          {showPassword ? (
-            <AiFillEye
-              className="eye-icon"
-              onClick={() => setShowPassword((prevState) => !prevState)}
-            />
-          ) : (
-            <AiFillEyeInvisible
-              className="eye-icon"
-              onClick={() => setShowPassword((prevState) => !prevState)}
-            />
-          )}
         </div>
-      </div>
-      <div className="h-5 text-secondary font-bold">{errorMessage && <p>{errorMessage}</p>}</div>
-      <div className="flex justify-center">
-        <button className="action-button" onClick={handleLogin}>
-          Log In
-        </button>
+        <div className="input-container flex justify-center">
+          <label htmlFor="password" className="label font-work-sans">
+            Password:
+          </label>
+          <div className="password-input relative w-full flex flex-end">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Enter Password"
+              onChange={handlePassword}
+              value={password}
+              className="input-password relative"
+            />
+            {showPassword ? (
+              <AiFillEye
+                className="eye-icon"
+                onClick={() => setShowPassword((prevState) => !prevState)}
+              />
+            ) : (
+              <AiFillEyeInvisible
+                className="eye-icon"
+                onClick={() => setShowPassword((prevState) => !prevState)}
+              />
+            )}
+          </div>
+        </div>
+        <div className="h-5 text-secondary font-bold">
+          {errorMessage && <p>{errorMessage}</p>}
+        </div>
+        <div className="flex justify-center">
+          <button className="action-button" onClick={handleLogin}>
+            Log In
+          </button>
+        </div>
       </div>
     </form>
   );

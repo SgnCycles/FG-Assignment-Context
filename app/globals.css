@@ -18,11 +18,11 @@
 }
 
 .input-container {
-  @apply relative flex p-5 justify-start bg-input border-4 border-primary gap-4 max-h-17.5 shadow-[5px_5px_var(--color-primary)] min-w-87.5 rounded-[20px];
+  @apply relative flex p-5 justify-start bg-input border-4 border-primary gap-4 lg:max-h-17.5 shadow-[5px_5px_var(--color-primary)] w-full rounded-[20px];
 }
 
 .input-username {
-  @apply ml-auto w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332] focus:translate-x-1.25 focus:-translate-y-1.25 focus:translate-z-5;
+  @apply ml-auto w-full xl:w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332] focus:translate-x-1.25 focus:-translate-y-1.25 focus:translate-z-5;
 }
 
 .password-input:focus-within {
@@ -30,7 +30,7 @@
 }
 
 .input-password {
-  @apply ml-auto w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332];
+  @apply ml-auto w-full xl:w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332];
 }
 
 .eye-icon {
@@ -38,7 +38,7 @@
 }
 
 .label {
-  @apply absolute top-3.75 -left-10 bg-[#e9b50b] text-black font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-black rounded-[20px] tracking-widest;
+  @apply absolute -top-5 xl:top-3.75 -left-5 xl:-left-10 bg-[#e9b50b] text-black font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-black rounded-[20px] tracking-widest;
 }
 
 .action-button {
@@ -47,6 +47,10 @@
 
 .grid-children {
   @apply w-full h-full;
+}
+
+.grid-children-wrapper {
+  @apply min-w-0 min-h-0;
 }
 
 .homepage-grid {
@@ -115,6 +119,9 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .homepage-grid {
+    grid-template-rows: 1fr 200px;
+  }
   .profile-settings,
   .recipe-expanded {
     grid-template-columns: 1fr;
@@ -145,5 +152,11 @@
 
   .profile-settings-button {
     height: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homepage-grid {
+    grid-template-rows: minmax(0, 1fr) 100px;
   }
 }

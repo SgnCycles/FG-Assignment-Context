@@ -15,7 +15,7 @@ export type RecipeCardType = {
   strCategory: string;
 };
 
-export type RecipeXSCardType = RecipeCardType & {
+export type RecipeSmallCardType = RecipeCardType & {
   ingredients?: string[];
 };
 
@@ -33,6 +33,7 @@ export type userContextType = {
   categories?: string[];
   username?: string;
   name?: string;
+  pageIsLoading: boolean;
 };
 
 export type MealType = {

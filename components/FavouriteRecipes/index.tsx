@@ -1,6 +1,6 @@
 "use client";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
-import RecipeCardXsmall from "@/components/RecipeCardXsmall";
+import RecipeCardSmall from "@/components/RecipeCardSmall";
 
 const FavouriteRecipes = () => {
   
@@ -9,7 +9,7 @@ const FavouriteRecipes = () => {
   return (
     <div className="w-full flex justify-center flex-wrap">
       {favouriteRecipes.map((recipe) => (
-        <RecipeCardXsmall {...recipe} key={recipe.idMeal} />
+        <RecipeCardSmall {...recipe} key={recipe.idMeal} />
       ))}
     </div>
   );

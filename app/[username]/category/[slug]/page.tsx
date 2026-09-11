@@ -1,4 +1,4 @@
-import RecipeCardXsmall from "@/components/RecipeCardXsmall";
+import RecipeCardSmall from "@/components/RecipeCardSmall";
 import { RecipeCardType } from "@/types/types";
 
 const CategoryPage = async ({ params }: { params: { slug: string } }) => {
@@ -26,7 +26,7 @@ const CategoryPage = async ({ params }: { params: { slug: string } }) => {
       <div className="w-full flex flex-col items-center">
         {recipes &&
           recipes.map((recipe) => (
-            <RecipeCardXsmall key={recipe.idMeal} {...recipe} />
+            <RecipeCardSmall key={recipe.idMeal} {...recipe} />
           ))}
       </div>
     </main>

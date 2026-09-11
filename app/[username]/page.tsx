@@ -2,10 +2,9 @@
 import { useEffect, useState } from "react";
 import { FullRecipeType, userContextType } from "@/types/types";
 import { useUserContext } from "@/context/userContext";
-import RecipeCardSmall from "@/components/RecipeCardSmall";
+import RecipeCardXsmall from "@/components/RecipeCardXsmall";
 
 const ProfilePage = () => {
-
   const { user } = useUserContext() as userContextType;
   const [recipe, setRecipe] = useState<FullRecipeType | null>(null);
   const MEAL_API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
@@ -57,17 +56,15 @@ const ProfilePage = () => {
   }, [user]);
 
   return (
-    <main className="flex flex-col lg:flex-row grow max-h-screen items-center justify-evenly lg:justify-around text-font-primary">
+    <main className="flex flex-col justify-around lg:grid lg:grid-cols-2 grow max-h-screen place-self-center text-font-primary w-full lg:w-[80%]">
       {user && (
-        <div className="h-full w-full lg:w-[50%] pl-4">
-          <div className="h-full flex flex-col justify-evenly font-manrope font-bold text-4xl lg:text-6xl text-shadow-[1px_1px_rgb(255_165_0)]">
+          <div className="h-full flex flex-col justify-center font-manrope font-bold text-4xl lg:text-6xl text-shadow-[1px_1px_rgb(255_165_0)] px-4 lg:px-0">
             <p className="text-5xl lg:text-7xl">Hi, {user.name}!</p>
             <p>Here is a recipe to try today.</p>
             <p>Knives out!</p>
           </div>
-        </div>
       )}
-      {recipe && <RecipeCardSmall recipe={recipe} />}
+      <div className="w-full h-full flex justify-end pr-8 md:pr-0 md:justify-center lg:justify-end items-center">{recipe && <RecipeCardXsmall recipe={recipe} />}</div>
     </main>
   );
 };
