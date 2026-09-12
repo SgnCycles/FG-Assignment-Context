@@ -21,6 +21,7 @@ export const FavouriteCategoryProvider = ({
 }: {
   children: ReactNode;
 }) => {
+  
   const { user } = useUserContext() as userContextType;
   const [categories, setCategories] = useState<FavouriteCategoryType[]>([]);
   const [favouriteCategories, setFavouriteCategories] = useState<

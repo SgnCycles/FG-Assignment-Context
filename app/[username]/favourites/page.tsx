@@ -8,7 +8,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const FavouritesPage = () => {
-  
   const { favouriteRecipes } = useFavouritesContext()!;
   const { setFavouriteRecipes } =
     useFavouritesContext() as FavouriteRecipeContextType;
@@ -53,12 +52,9 @@ const FavouritesPage = () => {
   );
 
   return (
-    <main
-      className="main-layout"
-      ref={favouritesContainerRef}
-    >
+    <main className="main-layout" ref={favouritesContainerRef}>
       <h1 className="page-heading">
-        Favourite Recipes:{favouriteRecipes.length}
+        Favourite Recipes
       </h1>
       <div className="w-full flex flex-col items-center">
         {favouriteRecipes.map((recipe) => (
@@ -67,7 +63,12 @@ const FavouritesPage = () => {
       </div>
       {favouriteRecipes.length > 0 && (
         <div className="w-[90%] flex justify-end place-self-center button">
-          <ActionButton name="Clear All" title="Favourite's List Cleared"  type="Error" onClickFunction={handleClearClick} />
+          <ActionButton
+            name="Clear All"
+            title="Favourite's List Cleared"
+            type="Error"
+            onClickFunction={handleClearClick}
+          />
         </div>
       )}
     </main>

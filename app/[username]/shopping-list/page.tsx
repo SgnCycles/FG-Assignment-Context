@@ -8,14 +8,9 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const ShoppingListPage = () => {
-
   const { shoppingList, setShoppingList } =
     useFavouritesContext()! as FavouriteRecipeContextType;
   const shoppingCardContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const handleClearClick = () => {
-    setShoppingList([]);
-  };
 
   useGSAP(
     () => {
@@ -50,6 +45,10 @@ const ShoppingListPage = () => {
     },
     { scope: shoppingCardContainerRef },
   );
+
+  const handleClearClick = () => {
+    setShoppingList([]);
+  };
 
   return (
     <main className="main-layout" ref={shoppingCardContainerRef}>

@@ -21,7 +21,7 @@ const RecipeCardXSmall = ({ recipe }: { recipe: FullRecipeType }) => {
           fill="none"
           d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
         ></path>
-        <text dy="-20" fill="#de5c38" className="font-fugaz-one text-xl">
+        <text dy="-20" x="20%" fill="#de5c38" className="font-fugaz-one text-xl">
           <textPath xlinkHref="#textcircle">{recipe.strMeal}</textPath>
         </text>
       </svg>

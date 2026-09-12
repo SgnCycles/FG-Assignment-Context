@@ -23,8 +23,8 @@
   --text-xl: clamp(1.35rem, 2.5vw + 1.25rem, 2.25rem);
   --text-lg: clamp(1.125rem, 1.5vw + 1rem, 1.75rem);
   --text-base: clamp(1rem, 1vw + 1rem, 1.25rem);
-  --width-card-xs: clamp(12.5rem, calc(12.5rem + 15vw), 30rem);
-  --height-card-xs: clamp(12.5rem, calc(12.5rem + 15vw), 30rem);
+  --width-card-xs: clamp(9.5rem, calc(8.5rem + 15vw), 30rem);
+  --height-card-xs: clamp(9.5rem, calc(8.5rem + 15vw), 30rem);
 }
 
 .input-container {
@@ -47,7 +47,7 @@
 }
 
 .label {
-  @apply absolute -top-5 xl:top-3.75 -left-5 xl:-left-10 bg-[#e9b50b] text-black font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-black rounded-[20px] tracking-widest;
+  @apply absolute -top-5 xl:top-3.75 -left-5 xl:-left-10 bg-[#e9b50b] text-primary font-bold py-1.25 px-2.5 text-[14px] translate-z-12.5 z-30 border-2 border-primary rounded-[20px] tracking-widest;
 }
 
 .action-button {
@@ -85,10 +85,14 @@
 }
 
 .page-heading {
-  @apply w-full font-bold text-4xl text-start font-manrope mb-8 pl-8 mt-8
+  @apply w-full font-bold text-4xl text-center lg:text-start font-manrope mb-8 lg:pl-8 mt-8
 }
 
 .main-layout {
+  @apply flex-1 min-h-0 flex flex-col justify-start items-center w-full gap-4 text-font-primary overflow-y-auto pb-8
+}
+
+.profile-layout {
   @apply flex-1 min-h-0 flex flex-col justify-start items-center w-full gap-4 text-font-primary overflow-y-auto
 }
 

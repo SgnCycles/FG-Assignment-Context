@@ -40,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${fugaz_one.variable} ${work_sans.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="h-screen flex flex-col m-0 bg-background">
+      <body className="h-full flex flex-col m-0 bg-background">
         <UserProvider>
           <ToastContainer
             position="top-right"

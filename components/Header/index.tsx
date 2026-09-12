@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { IoMdLogOut } from "react-icons/io";
 
 const Header = () => {
+  
   const { user, setUser, setIsLoggedIn } = useUserContext() as userContextType;
   const router = useRouter();
 

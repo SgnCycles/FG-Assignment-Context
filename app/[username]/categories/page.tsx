@@ -29,7 +29,7 @@ const CategoriesPage = () => {
           delay: 0.5,
           stagger: 0.1,
           duration: 0.5,
-          ease: "power2.out",
+          ease: "power3.out",
         },
       );
     },
@@ -39,7 +39,7 @@ const CategoriesPage = () => {
   return (
     <main className="main-layout">
       <h1 className="page-heading">
-        Favourite Categories
+        Categories
       </h1>
       <div
         className="category-grid grid auto-rows-50 w-[90%] gap-4"

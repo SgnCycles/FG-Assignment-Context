@@ -105,18 +105,20 @@ const ProfilePage = () => {
 
   return (
     <main
-      className="flex flex-col justify-around lg:grid lg:grid-cols-2 grow max-h-screen place-self-center text-font-primary w-full lg:w-[80%]"
+      className="profile-layout"
       ref={ProfileRecipeContainerRef}
     >
-      {user && (
-        <div className="user-heading h-full flex flex-col justify-center font-manrope font-bold text-4xl lg:text-6xl text-shadow-[1px_1px_rgb(255_165_0)] px-4 lg:px-0">
-          <p className="text-5xl lg:text-7xl">Hi, {user.name}!</p>
-          <p>Here is a recipe to try today.</p>
-          <p>Knives out!</p>
+      <div className="flex flex-col justify-around lg:grid lg:grid-cols-2 grow max-h-screen place-self-center text-font-primary w-full lg:w-[80%]">
+        {user && (
+          <div className="user-heading h-full flex flex-col justify-center font-manrope font-bold text-4xl lg:text-6xl text-shadow-[1px_1px_rgb(255_165_0)] px-4 lg:px-0">
+            <p className="text-5xl lg:text-7xl">Hi, {user.name}!</p>
+            <p>Here is a recipe to try today.</p>
+            <p>Knives out!</p>
+          </div>
+        )}
+        <div className="w-full h-full flex justify-end pr-8 md:pr-0 md:justify-center lg:justify-end items-center">
+          {recipe && <RecipeCardXsmall recipe={recipe} />}
         </div>
-      )}
-      <div className="w-full h-full flex justify-end pr-8 md:pr-0 md:justify-center lg:justify-end items-center">
-        {recipe && <RecipeCardXsmall recipe={recipe} />}
       </div>
     </main>
   );
