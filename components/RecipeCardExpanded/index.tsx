@@ -25,12 +25,12 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
   };
 
   return (
-    <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-font-primary text-xl">
+    <div className="w-[90%] recipe-expanded grid mb-4 gap-x-2 gap-y-2 text-font-primary text-base">
       <div className="meal-name font-manrope bg-primary text-font-secondary p-8">
-        <h2 className="font-bold text-4xl lg:text-5xl text-start mb-2">
+        <h2 className="font-bold text-2xl text-start mb-2">
           {recipe.strMeal}
         </h2>
-        <p className="font-bold text-md lg:text-xl text-start">
+        <p className="font-bold text-start">
           Country of Origin: {recipe.strCountry}
         </p>
       </div>
@@ -42,11 +42,11 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         ></img>
       </div>
       <div className="meal-ingredients p-8 border-2 border-primary relative bg-[#F8A436]">
-        <h3 className="font-work-sans font-bold tracking-widest text-2xl pb-4 lg:pb-0 mb-2 lg:mb-4">
+        <h3 className="font-work-sans font-bold tracking-widest text-lg pb-4 lg:pb-0 mb-2 lg:mb-4">
           Ingredients:
         </h3>
         <div className="flex flex-col flex-wrap w-full">
-          <ul className="flex flex-col lg:grid lg:grid-flow-col lg:grid-rows-[repeat(3,auto)] lg:auto-cols-max lg:gap-2.5 lg:gap-x-7.5">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 lg:gap-x-7.5">
             {recipe.ingredients.map((ingredient: string, index: number) => (
               <li key={index}>{ingredient}</li>
             ))}
@@ -55,7 +55,7 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         <div className="absolute top-1 right-1">
           {isOnShoppingList(recipe.idMeal) ? (
             <MdPlaylistAddCheck
-              className="text-3xl cursor-pointer hover:border-2 hover:rounded-full"
+              className="text-2xl cursor-pointer text-primary hover:text-secondary"
               onClick={() => {
                 handleShoppingListClick();
                 toast.error("Removed from Shopping list");
@@ -63,7 +63,7 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
             />
           ) : (
             <MdPlaylistAdd
-              className="text-3xl cursor-pointer text-secondary hover:border-2 hover:rounded-full"
+              className="text-2xl cursor-pointer text-secondary hover:text-primary"
               onClick={() => {
                 handleShoppingListClick();
                 toast.success("Added to Shopping list");
@@ -73,7 +73,7 @@ const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
         </div>
       </div>
       <div className="meal-instructions p-8 border-2 border-primary bg-orange-200">
-        <h3 className="font-work-sans font-bold tracking-widest text-2xl pb-4 lg:pb-0 mb-2 lg:mb-4">
+        <h3 className="font-work-sans font-bold tracking-widest text-lg pb-4 lg:pb-0 mb-2 lg:mb-4">
           Instructions:
         </h3>
         <div>{recipe.strInstructions}</div>

@@ -37,8 +37,8 @@ const CategoriesPage = () => {
   );
 
   return (
-    <main className="flex-1 min-h-0 flex flex-col justify-start items-center w-full pb-8 mt-8 gap-4 text-font-primary overflow-y-auto">
-      <h1 className="w-full font-bold text-5xl text-start font-manrope mb-8 pl-8 text-shadow-[1px_1px_rgb(255_165_0)]">
+    <main className="main-layout">
+      <h1 className="page-heading">
         Favourite Categories
       </h1>
       <div

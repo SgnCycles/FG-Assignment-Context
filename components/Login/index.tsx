@@ -80,7 +80,7 @@ const Login = () => {
             )}
           </div>
         </div>
-        <div className="h-5 text-secondary font-bold">
+        <div className="h-5 text-secondary font-bold text-base">
           {errorMessage && <p>{errorMessage}</p>}
         </div>
         <div className="flex justify-center">

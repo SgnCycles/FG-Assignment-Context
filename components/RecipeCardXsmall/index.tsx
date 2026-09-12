@@ -8,7 +8,7 @@ const RecipeCardXSmall = ({ recipe }: { recipe: FullRecipeType }) => {
 
   return (
     <Link
-      className="recipe-xsmall relative bg-contain bg-center bg-no-repeat w-50 h-50 md:w-60 md:h-60 lg:w-80 lg:h-80 border-4 border-primary rounded-full mr-2 mb-4 lg:mr-0 lg:mb-0"
+      className="recipe-xsmall relative bg-contain bg-center bg-no-repeat w-card-xs h-card-xs border-4 border-primary rounded-full mr-2 mb-4 lg:mr-0 lg:mb-0"
       style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
       href={`/${user!.username}/recipe/${recipe.idMeal}`}
     >
@@ -21,7 +21,7 @@ const RecipeCardXSmall = ({ recipe }: { recipe: FullRecipeType }) => {
           fill="none"
           d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
         ></path>
-        <text dy="-10" fill="#de5c38" className="font-fugaz-one text-4xl">
+        <text dy="-20" fill="#de5c38" className="font-fugaz-one text-xl">
           <textPath xlinkHref="#textcircle">{recipe.strMeal}</textPath>
         </text>
       </svg>

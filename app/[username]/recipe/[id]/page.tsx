@@ -15,7 +15,7 @@ const RecipePage = ({ params }: { params: Promise<{ id: string }> }) => {
   }, [id, getRecipe]);
 
   return (
-    <main className="flex-1 min-h-0 grid place-items-center overflow-y-auto">
+    <main className="recipe-layout">
       {recipe && <RecipeCardExpanded recipe={recipe} />}
     </main>
   );

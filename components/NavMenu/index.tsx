@@ -12,7 +12,7 @@ const NavMenu = () => {
   return (
     <>
       {user && (
-        <nav className="hidden lg:flex justify-around py-4 font-work-sans font-bold text-xl tracking-widest text-font-primary">
+        <nav className="hidden lg:flex justify-around py-4 font-work-sans font-bold text-base tracking-widest text-font-primary">
           <Link href={`/${user.username}`} className="hover:text-secondary">
             Home
           </Link>

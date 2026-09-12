@@ -54,8 +54,8 @@ const CategoryPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   }, [user, slug]);
 
   return (
-    <main className="flex-1 min-h-0 flex flex-col justify-start items-center w-full pb-8 mt-8 text-font-primary overflow-y-auto">
-      <h1 className="font-bold text-5xl text-start text-font-primary font-manrope mb-8 pl-8 w-full">
+    <main className="main-layout">
+      <h1 className="page-heading">
         {slug} recipes
       </h1>
       <div

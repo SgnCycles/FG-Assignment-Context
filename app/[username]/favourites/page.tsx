@@ -54,10 +54,10 @@ const FavouritesPage = () => {
 
   return (
     <main
-      className="flex-1 min-h-0 flex flex-col justify-start items-center w-full pb-8 mt-8 gap-4 text-font-primary overflow-y-auto"
+      className="main-layout"
       ref={favouritesContainerRef}
     >
-      <h1 className="font-bold text-5xl text-start text-font-primary font-manrope mb-8 pl-8 w-full">
+      <h1 className="page-heading">
         Favourite Recipes:{favouriteRecipes.length}
       </h1>
       <div className="w-full flex flex-col items-center">

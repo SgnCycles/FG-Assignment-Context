@@ -15,6 +15,16 @@
   --color-accent: #f2bf4a;
   --color-font-primary: #18472e;
   --color-font-secondary: #fef0dc;
+  --text-6xl: clamp(2.5rem, 4.2vw + 1.5rem, 5rem);
+  --text-5xl: clamp(2.25rem, 4vw + 1.45rem, 4.5rem);
+  --text-4xl: clamp(2rem, 3.75vw + 1.4rem, 4rem);
+  --text-3xl: clamp(1.75rem, 3.5vw + 1.35rem, 3.5rem);
+  --text-2xl: clamp(1.5rem, 3vw + 1.3rem, 3rem);
+  --text-xl: clamp(1.35rem, 2.5vw + 1.25rem, 2.25rem);
+  --text-lg: clamp(1.125rem, 1.5vw + 1rem, 1.75rem);
+  --text-base: clamp(1rem, 1vw + 1rem, 1.25rem);
+  --width-card-xs: clamp(12.5rem, calc(12.5rem + 15vw), 30rem);
+  --height-card-xs: clamp(12.5rem, calc(12.5rem + 15vw), 30rem);
 }
 
 .input-container {
@@ -24,9 +34,8 @@
 .input-username {
   @apply ml-auto w-full xl:w-[80%] h-7.5 outline-none border-3 border-primary pl-2 text-base bg-white text-primary tracking-widest rounded-br-lg font-bold placeholder:text-[#666] placeholder:font-bold focus:bg-input focus:shadow-[5px_5px_0_0_#095332] focus:translate-x-1.25 focus:-translate-y-1.25 focus:translate-z-5;
 }
-
-.password-input:focus-within {
-  @apply translate-x-1.25 -translate-y-1.25;
+.input-username:focus, .password-input:focus-within {
+  @apply translate-x-1.25 translate-y-1.25 lg:-translate-y-1.25;
 }
 
 .input-password {
@@ -34,7 +43,7 @@
 }
 
 .eye-icon {
-  @apply cursor-pointer absolute text-primary top-3.5 right-3 text-xl -translate-y-1/2;
+  @apply cursor-pointer absolute text-primary top-3.75 right-3 text-lg -translate-y-1/2;
 }
 
 .label {
@@ -42,7 +51,20 @@
 }
 
 .action-button {
-  @apply inline-block py-1 px-5 text-2xl font-bold tracking-widest bg-secondary border-2 border-primary text-primary rounded-xl shadow-[5px_5px_0_#095332] transition-all duration-300 ease-in-out cursor-pointer hover:bg-[#e9b50b] hover:text-secondary hover:border-secondary hover:shadow-[5px_5px_0_#f73333] active:bg-amber-300 active:shadow-none active:translate-y-2 w-40 hover:tracking-[5px];
+  @apply inline-block py-1 px-5 text-base font-bold tracking-widest bg-secondary border-2 border-primary text-primary rounded-xl shadow-[5px_5px_0_#095332] transition-all duration-300 ease-in-out cursor-pointer hover:bg-[#e9b50b] hover:text-secondary hover:border-secondary hover:shadow-[5px_5px_0_#f73333] active:bg-amber-300 active:shadow-none active:translate-y-2 w-40 hover:tracking-[5px];
+}
+
+.trash-button {
+  @apply text-xl lg:text-lg cursor-pointer text-secondary hover:text-background place-self-center
+}
+
+.add-button {
+  @apply text-2xl lg:text-xl cursor-pointer  text-secondary
+  hover:text-primary 
+}
+
+.remove-button {
+  @apply text-2xl lg:text-xl cursor-pointer text-primary hover:text-secondary
 }
 
 .grid-children {
@@ -53,9 +75,21 @@
   @apply min-w-0 min-h-0;
 }
 
+.page-heading {
+  @apply w-full font-bold text-4xl text-start font-manrope mb-8 pl-8 mt-8
+}
+
+.main-layout {
+  @apply flex-1 min-h-0 flex flex-col justify-start items-center w-full gap-4 text-font-primary overflow-y-auto
+}
+
+.recipe-layout {
+  @apply flex-1 min-h-0 grid place-items-center overflow-y-auto
+}
+
 .profile-settings {
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 70px auto;
 }
 
 .profile-settings-header {

@@ -12,7 +12,7 @@ const ProfileSettingsPage = () => {
 
   return (
     <main
-      className="flex-1 min-h-0 flex flex-col justify-start items-center w-full pb-8 text-font-primary overflow-y-auto">
+      className="main-layout">
       {user && <ProfileCard user={user} categories={categories} />}
     </main>
   );

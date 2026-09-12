@@ -85,7 +85,7 @@ const RecipeCardSmall = ({
           />
         </div>
         <div className="flex items-center grow px-4 py-4 lg:pl-8">
-          <h2 className="text-3xl text-start text-heading font-work-sans font-medium">
+          <h2 className="text-xl text-start text-heading font-work-sans font-medium">
             {strMeal}
           </h2>
         </div>
@@ -94,7 +94,7 @@ const RecipeCardSmall = ({
         {!isCategoryPage ? (
           isOnShoppingList(idMeal) ? (
             <MdPlaylistAddCheck
-              className="text-4xl cursor-pointer text-primary hover:text-secondary"
+              className="remove-button"
               onClick={() => {
                 handleAddToShoppingListClick();
                 toast.error("Removed from Shopping list");
@@ -102,7 +102,7 @@ const RecipeCardSmall = ({
             />
           ) : (
             <MdPlaylistAdd
-              className="text-4xl cursor-pointer text-secondary hover:text-primary"
+              className="add-button"
               onClick={() => {
                 handleAddToShoppingListClick();
                 toast.success("Added to Shopping list");
@@ -113,7 +113,7 @@ const RecipeCardSmall = ({
         {isCategoryPage ? (
           isFavourite(idMeal) ? (
             <MdRemoveCircleOutline
-              className="text-4xl cursor-pointer text-secondary"
+              className="remove-button"
               onClick={() => {
                 handleAddRecipeClick();
                 toast.error("Recipe removed from Favourites");
@@ -121,7 +121,7 @@ const RecipeCardSmall = ({
             />
           ) : (
             <MdAddCircleOutline
-              className="text-4xl cursor-pointer text-primary"
+              className="add-button"
               onClick={() => {
                 handleAddRecipeClick();
                 toast.success("Recipe added to Favourites");
@@ -130,7 +130,7 @@ const RecipeCardSmall = ({
           )
         ) : (
           <FaTrashCan
-            className="text-3xl cursor-pointer text-secondary hover:text-primary"
+            className="trash-button"
             onClick={() => {
               removeFavourites(idMeal);
               toast.error("Recipe deleted from Favourites");
