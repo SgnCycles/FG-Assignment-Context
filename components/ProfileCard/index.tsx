@@ -4,14 +4,15 @@ import {
   FavouriteCategoryType,
   ProfileCardType,
 } from "@/types/types";
-import SaveSettingsButton from "../buttons/SaveSettingsButton";
+import ActionButton from "../buttons/ActionButton";
 
 const ProfileCard = ({ user, categories }: ProfileCardType) => {
-  
+
   const {
     addToFavouriteCategory,
     removeFavouriteCategory,
     isFavouriteCategory,
+    saveProfileCategorySettings,
   } = useFavouriteCategoryContext() as FavouriteCategoriesContextType;
 
   const handleAddCategoryClick = (category: FavouriteCategoryType) => {
@@ -75,7 +76,12 @@ const ProfileCard = ({ user, categories }: ProfileCardType) => {
         </ul>
       </div>
       <div className="profile-settings-button flex justify-end mt-4">
-        <SaveSettingsButton />
+        <ActionButton
+          name="Save"
+          title="Settings Updated"
+          type="Success"
+          onClickFunction={saveProfileCategorySettings}
+        />
       </div>
     </div>
   );

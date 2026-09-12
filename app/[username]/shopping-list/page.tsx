@@ -1,5 +1,5 @@
 "use client";
-import ClearButton from "@/components/buttons/ClearButton";
+import ActionButton from "@/components/buttons/ActionButton";
 import ShoppingListCard from "@/components/ShoppingListCard";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { FavouriteRecipeContextType } from "@/types/types";
@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const ShoppingListPage = () => {
-  
+
   const { shoppingList, setShoppingList } =
     useFavouritesContext()! as FavouriteRecipeContextType;
   const shoppingCardContainerRef = useRef<HTMLDivElement | null>(null);
@@ -52,13 +52,8 @@ const ShoppingListPage = () => {
   );
 
   return (
-    <main
-      className="main-layout"
-      ref={shoppingCardContainerRef}
-    >
-      <h1 className="page-heading">
-        Shopping List
-      </h1>
+    <main className="main-layout" ref={shoppingCardContainerRef}>
+      <h1 className="page-heading">Shopping List</h1>
       <div className="w-[90%]">
         {shoppingList &&
           shoppingList.map((recipe) => (
@@ -67,7 +62,12 @@ const ShoppingListPage = () => {
       </div>
       {shoppingList.length > 0 && (
         <div className="w-[90%] flex justify-end button">
-          <ClearButton name="Shopping" onClickFunction={handleClearClick} />
+          <ActionButton
+            name="Clear All"
+            title="Shopping List Cleared"
+            type="Error"
+            onClickFunction={handleClearClick}
+          />
         </div>
       )}
     </main>

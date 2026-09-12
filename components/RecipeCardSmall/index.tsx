@@ -113,7 +113,7 @@ const RecipeCardSmall = ({
         {isCategoryPage ? (
           isFavourite(idMeal) ? (
             <MdRemoveCircleOutline
-              className="remove-button"
+              className="remove-favourite-button"
               onClick={() => {
                 handleAddRecipeClick();
                 toast.error("Recipe removed from Favourites");
@@ -121,7 +121,7 @@ const RecipeCardSmall = ({
             />
           ) : (
             <MdAddCircleOutline
-              className="add-button"
+              className="add-favourite-button"
               onClick={() => {
                 handleAddRecipeClick();
                 toast.success("Recipe added to Favourites");

@@ -1,5 +1,5 @@
 "use client";
-import ClearButton from "@/components/buttons/ClearButton";
+import ActionButton from "@/components/buttons/ActionButton";
 import RecipeCardSmall from "@/components/RecipeCardSmall";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { FavouriteRecipeContextType } from "@/types/types";
@@ -67,7 +67,7 @@ const FavouritesPage = () => {
       </div>
       {favouriteRecipes.length > 0 && (
         <div className="w-[90%] flex justify-end place-self-center button">
-          <ClearButton name="Favourites" onClickFunction={handleClearClick} />
+          <ActionButton name="Clear All" title="Favourite's List Cleared"  type="Error" onClickFunction={handleClearClick} />
         </div>
       )}
     </main>

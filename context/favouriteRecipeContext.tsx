@@ -1,5 +1,6 @@
 "use client";
 import {
+  boughtIngredientType,
   FavouriteRecipeContextType,
   FavouritesType,
   FullRecipeType,
@@ -30,58 +31,9 @@ export const FavouriteRecipeProvider = ({
     [],
   );
   const [shoppingList, setShoppingList] = useState<ShoppingListType[]>([]);
-
-  const addToFavourites = (newRecipe: FavouritesType) => {
-    setFavouriteRecipes((currentRecipe) => {
-      const updatedFavourites = [...currentRecipe, newRecipe];
-      return updatedFavourites;
-    });
-  };
-
-  const removeFavourites = (id: string) => {
-    setFavouriteRecipes((curentRecipe) =>
-      curentRecipe.filter((item) => item.idMeal !== id),
-    );
-  };
-
-  const isFavourite = (id: string) => {
-    return favouriteRecipes.some((item) => item.idMeal === id);
-  };
-
-  const addToShoppingList = (newRecipe: ShoppingListType) => {
-    setShoppingList((currentRecipe) => {
-      const updatedShoppingList = [...currentRecipe, newRecipe];
-      return updatedShoppingList;
-    });
-  };
-
-  const removeFromShoppingList = (id: string) => {
-    setShoppingList((curentRecipe) =>
-      curentRecipe.filter((item) => item.idMeal !== id),
-    );
-  };
-
-  const isOnShoppingList = (id: string) => {
-    return shoppingList.some((item) => item.idMeal === id);
-  };
-
-  useEffect(() => {
-    if (!user) return;
-    const recipeArray = localStorage.getItem(`recipes_${user.id}`);
-    if (recipeArray) {
-      setFavouriteRecipes(JSON.parse(recipeArray));
-    } else {
-      setFavouriteRecipes([]);
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      `recipes_${user.id}`,
-      JSON.stringify(favouriteRecipes),
-    );
-  }, [favouriteRecipes, user]);
+  const [boughtIngredientList, setBoughtIngredientList] = useState<
+    boughtIngredientType[]
+  >([]);
 
   const getRecipe = async (id: string) => {
     try {
@@ -131,6 +83,85 @@ export const FavouriteRecipeProvider = ({
     }
   };
 
+  const addToFavourites = (newRecipe: FavouritesType) => {
+    setFavouriteRecipes((currentRecipe) => {
+      const updatedFavourites = [...currentRecipe, newRecipe];
+      return updatedFavourites;
+    });
+  };
+
+  const removeFavourites = (id: string) => {
+    setFavouriteRecipes((curentRecipe) =>
+      curentRecipe.filter((item) => item.idMeal !== id),
+    );
+    setBoughtIngredientList([]);
+  };
+
+  const isFavourite = (id: string) => {
+    return favouriteRecipes.some((item) => item.idMeal === id);
+  };
+
+  const addToShoppingList = (newRecipe: ShoppingListType) => {
+    setShoppingList((currentRecipe) => {
+      const updatedShoppingList = [...currentRecipe, newRecipe];
+      return updatedShoppingList;
+    });
+  };
+
+  const removeFromShoppingList = (id: string) => {
+    setShoppingList((curentRecipe) =>
+      curentRecipe.filter((item) => item.idMeal !== id),
+    );
+    setBoughtIngredientList([]);
+  };
+
+  const isOnShoppingList = (id: string) => {
+    return shoppingList.some((item) => item.idMeal === id);
+  };
+
+  const addToBoughtList = (newIngredient: boughtIngredientType) => {
+    setBoughtIngredientList((ingredient) => {
+      const boughtIngredientList = [...ingredient, newIngredient];
+      return boughtIngredientList;
+    });
+  };
+
+  const removeFromBoughtList = (ingredient: boughtIngredientType) => {
+    setBoughtIngredientList((boughtIngredientList) =>
+      boughtIngredientList.filter((item) => item !== ingredient),
+    );
+  };
+
+  const isBought = (ingredient: boughtIngredientType) => {
+    return boughtIngredientList.some((item) => item === ingredient);
+  };
+
+  const handleBoughtClick = (ingredient: boughtIngredientType) => {
+    if (isBought(ingredient)) {
+      removeFromBoughtList(ingredient);
+    } else {
+      addToBoughtList(ingredient);
+    }
+  };
+
+  useEffect(() => {
+    if (!user) return;
+    const recipeArray = localStorage.getItem(`recipes_${user.id}`);
+    if (recipeArray) {
+      setFavouriteRecipes(JSON.parse(recipeArray));
+    } else {
+      setFavouriteRecipes([]);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    localStorage.setItem(
+      `recipes_${user.id}`,
+      JSON.stringify(favouriteRecipes),
+    );
+  }, [favouriteRecipes, user]);
+
   useEffect(() => {
     if (!user) return;
     const ingredientArray = localStorage.getItem(`shoppingList_${user.id}`);
@@ -149,6 +180,18 @@ export const FavouriteRecipeProvider = ({
     );
   }, [shoppingList, user]);
 
+  useEffect(() => {
+    if (!user) return;
+    const boughtIngredientArray = localStorage.getItem(
+      `boughtIngredientList_${user.id}`,
+    );
+    if (boughtIngredientArray) {
+      setBoughtIngredientList(JSON.parse(boughtIngredientArray));
+    } else {
+      setBoughtIngredientList([]);
+    }
+  }, [user]);
+
   return (
     <FavouriteRecipeContext.Provider
       value={{
@@ -164,6 +207,10 @@ export const FavouriteRecipeProvider = ({
         isOnShoppingList,
         shoppingList,
         setShoppingList,
+        handleBoughtClick,
+        isBought,
+        setBoughtIngredientList,
+        boughtIngredientList,
       }}
     >
       {children}

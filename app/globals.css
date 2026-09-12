@@ -67,6 +67,15 @@
   @apply text-2xl lg:text-xl cursor-pointer text-primary hover:text-secondary
 }
 
+.add-favourite-button {
+  @apply text-2xl lg:text-xl cursor-pointer  text-primary
+  hover:text-secondary 
+}
+
+.remove-favourite-button{
+  @apply text-2xl lg:text-xl cursor-pointer text-secondary hover:text-primary
+}
+
 .grid-children {
   @apply w-full h-full;
 }

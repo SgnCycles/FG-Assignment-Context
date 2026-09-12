@@ -1,3 +1,4 @@
+"use client";
 import {
   FavouriteRecipeContextType,
   ShoppingListType,
@@ -8,11 +9,30 @@ import { FaTrashCan } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import { useUserContext } from "@/context/userContext";
+import ActionButton from "../buttons/ActionButton";
 
 const ShoppingListCard = ({ recipe }: { recipe: ShoppingListType }) => {
-  const { removeFromShoppingList } =
-    useFavouritesContext() as FavouriteRecipeContextType;
+  
+  const {
+    removeFromShoppingList,
+    handleBoughtClick,
+    isBought,
+    setBoughtIngredientList,
+    boughtIngredientList,
+  } = useFavouritesContext() as FavouriteRecipeContextType;
   const { user } = useUserContext() as userContextType;
+
+  const handleClearClick = () => {
+    setBoughtIngredientList([]);
+  };
+
+  const saveBoughtIngredients = () => {
+    if (!user) return;
+    localStorage.setItem(
+      `boughtIngredientList_${user.id}`,
+      JSON.stringify(boughtIngredientList),
+    );
+  };
 
   return (
     <div className="shopping-list-card mb-4 gap-x-2 gap-y-2 text-primary bg-primary relative text-base">
@@ -39,9 +59,39 @@ const ShoppingListCard = ({ recipe }: { recipe: ShoppingListType }) => {
         <div className="flex flex-col flex-wrap w-full">
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 lg:gap-x-7.5">
             {recipe.combinedIngredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+              <li key={index} className="p-2 text-base">
+                <input
+                  type="checkbox"
+                  onChange={() => handleBoughtClick(ingredient)}
+                  checked={isBought(ingredient)}
+                  id={`check-${ingredient}`}
+                  name={ingredient}
+                  value={ingredient}
+                  className="accent-secondary cursor-pointer"
+                ></input>
+                <label
+                  className={`pl-1 cursor-pointer ${isBought(ingredient) ? "line-through" : ""}`}
+                  htmlFor={`check-${ingredient}`}
+                >
+                  {ingredient}
+                </label>
+              </li>
             ))}
           </ul>
+        </div>
+        <div className="flex justify-end pt-8 gap-8">
+          <ActionButton
+            name="Save"
+            title="Ingredient list Updated"
+            type="Success"
+            onClickFunction={saveBoughtIngredients}
+          />
+          <ActionButton
+            name="Clear"
+            title="Shopping List For Recipe Cleared"
+            type="Error"
+            onClickFunction={handleClearClick}
+          />
         </div>
       </div>
       <FaTrashCan

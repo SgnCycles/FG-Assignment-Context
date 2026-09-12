@@ -86,6 +86,12 @@ export type FavouriteRecipeContextType = {
   shoppingList: ShoppingListType[];
   setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListType[]>>;
   setFavouriteRecipes: React.Dispatch<React.SetStateAction<FavouritesType[]>>;
+  handleBoughtClick: (ingredient: boughtIngredientType) => void;
+  isBought: (ingredient: boughtIngredientType) => boolean;
+  setBoughtIngredientList: React.Dispatch<
+    React.SetStateAction<boughtIngredientType[]>
+  >;
+  boughtIngredientList: boughtIngredientType[];
 };
 
 export type FavouriteCategoriesContextType = {
@@ -97,11 +103,15 @@ export type FavouriteCategoriesContextType = {
   saveProfileCategorySettings: () => void;
 };
 
-export type ClearButtonType = {
+export type ActionButtonType = {
   name: string;
+  title: string;
+  type: string;
   onClickFunction: () => void;
 };
 
 export type CategoryRecipeCardAnimationType = {
   children: React.ReactNode;
 };
+
+export type boughtIngredientType = string;
