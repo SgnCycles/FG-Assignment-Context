@@ -27,7 +27,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Savor",
+  title: "Lune & Table",
   description: "Choose your next meal",
   icons: {
     icon: "/favicon.png",
