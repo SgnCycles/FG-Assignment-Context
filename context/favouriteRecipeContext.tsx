@@ -96,6 +96,8 @@ export const FavouriteRecipeProvider = ({
       curentRecipe.filter((item) => item.idMeal !== id),
     );
     setBoughtIngredientList([]);
+    setShoppingList((curentRecipe) =>
+      curentRecipe.filter((item) => item.idMeal !== id),);
   };
 
   const isFavourite = (id: string) => {

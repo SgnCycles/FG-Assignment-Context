@@ -1,13 +1,13 @@
 "use client";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { useUserContext } from "@/context/userContext";
-import { userContextType } from "@/types/types";
+import { FavouriteRecipeContextType, userContextType } from "@/types/types";
 import Link from "next/link";
 
 const NavMenu = () => {
   
   const { user } = useUserContext() as userContextType;
-  const { favouriteRecipes, shoppingList } = useFavouritesContext()!;
+  const { favouriteRecipes, shoppingList } = useFavouritesContext() as FavouriteRecipeContextType;
 
   return (
     <>

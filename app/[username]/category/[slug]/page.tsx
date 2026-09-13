@@ -7,7 +7,7 @@ import { gsap } from "@/utils/gsap";
 import { useGSAP } from "@gsap/react";
 
 const CategoryPage = ({ params }: { params: Promise<{ slug: string }> }) => {
-
+  
   const { user } = useUserContext() as userContextType;
   const { slug } = use(params);
   const [categoryRecipes, setCategoryRecipes] = useState<RecipeCardType[]>([]);
@@ -29,6 +29,7 @@ const CategoryPage = ({ params }: { params: Promise<{ slug: string }> }) => {
 
   useGSAP(
     () => {
+      if (!categoryRecipesContainerRef.current || !categoryRecipes.length) return;
       gsap.fromTo(
         ".recipe-card",
         {
@@ -55,9 +56,7 @@ const CategoryPage = ({ params }: { params: Promise<{ slug: string }> }) => {
 
   return (
     <main className="main-layout">
-      <h1 className="page-heading">
-        {slug} recipes
-      </h1>
+      <h1 className="page-heading">{slug} recipes</h1>
       <div
         className="w-full flex flex-col items-center"
         ref={categoryRecipesContainerRef}

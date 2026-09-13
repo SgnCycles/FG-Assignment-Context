@@ -8,8 +8,8 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const FavouritesPage = () => {
-  const { favouriteRecipes } = useFavouritesContext()!;
-  const { setFavouriteRecipes } =
+  
+  const { favouriteRecipes, setFavouriteRecipes } =
     useFavouritesContext() as FavouriteRecipeContextType;
   const favouritesContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -19,6 +19,7 @@ const FavouritesPage = () => {
 
   useGSAP(
     () => {
+      if (!favouritesContainerRef.current || !favouriteRecipes.length) return;
       const tl = gsap.timeline({ delay: 0.5 });
       tl.fromTo(
         ".recipe-card",
@@ -53,9 +54,7 @@ const FavouritesPage = () => {
 
   return (
     <main className="main-layout" ref={favouritesContainerRef}>
-      <h1 className="page-heading">
-        Favourite Recipes
-      </h1>
+      <h1 className="page-heading">Favourite Recipes</h1>
       <div className="w-full flex flex-col items-center">
         {favouriteRecipes.map((recipe) => (
           <RecipeCardSmall {...recipe} key={recipe.idMeal} />

@@ -12,7 +12,7 @@ const CategoryCard = ({
 
   return (
     <Link
-      className="category-card relative bg-primary flex items-end justify-end p-8 rounded-lg"
+      className="category-card relative bg-primary flex items-end justify-end p-8 rounded-lg border-2 border-green-900"
       href={`/${user!.username}/category/${strCategory}`}
     >
       <h2 className="absolute top-2 left-4 font-work-sans text-secondary text-xl font-bold tracking-widest">

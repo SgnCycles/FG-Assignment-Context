@@ -1,5 +1,6 @@
 "use client";
 import {
+  FavouriteRecipeContextType,
   FavouritesType,
   RecipeSmallCardType,
   ShoppingListType,
@@ -33,7 +34,7 @@ const RecipeCardSmall = ({
     addToShoppingList,
     removeFromShoppingList,
     isOnShoppingList,
-  } = useFavouritesContext()!;
+  } = useFavouritesContext() as FavouriteRecipeContextType;
   const pathname = usePathname();
   const isCategoryPage = pathname.includes("/category/");
   const { user } = useUserContext() as userContextType;
@@ -133,7 +134,7 @@ const RecipeCardSmall = ({
             className="trash-button"
             onClick={() => {
               removeFavourites(idMeal);
-              toast.error("Recipe deleted from Favourites");
+              toast.error("Recipe Deleted From Favourites");
             }}
           />
         )}

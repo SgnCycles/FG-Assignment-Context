@@ -17,6 +17,7 @@ const CategoriesPage = () => {
 
   useGSAP(
     () => {
+      if (!categoryContainerRef.current || !favouriteCategories.length) return;
       gsap.fromTo(
         ".category-card",
         {
@@ -33,14 +34,15 @@ const CategoriesPage = () => {
         },
       );
     },
-    { scope: categoryContainerRef },
+    { scope: categoryContainerRef,
+      dependencies: [favouriteCategories],
+      revertOnUpdate: true,
+     },
   );
 
   return (
     <main className="main-layout">
-      <h1 className="page-heading">
-        Categories
-      </h1>
+      <h1 className="page-heading">Categories</h1>
       <div
         className="category-grid grid auto-rows-50 w-[90%] gap-4"
         ref={categoryContainerRef}

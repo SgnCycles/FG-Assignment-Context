@@ -1,4 +1,4 @@
-import { FullRecipeType, ShoppingListType } from "@/types/types";
+import { FavouriteRecipeContextType, FullRecipeType, ShoppingListType } from "@/types/types";
 import FavouriteButton from "../buttons/FavouriteButton";
 import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const RecipeCardExpanded = ({ recipe }: { recipe: FullRecipeType }) => {
   
   const { addToShoppingList, removeFromShoppingList, isOnShoppingList } =
-    useFavouritesContext()!;
+    useFavouritesContext() as FavouriteRecipeContextType;
 
   const handleShoppingListClick = () => {
     const recipeForShoppingList: ShoppingListType = {

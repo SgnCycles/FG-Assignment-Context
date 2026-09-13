@@ -5,7 +5,7 @@ export const users: UserType[] = [
     id: "user_001",
     name: "Leo",
     image: null,
-    username: "null_bro",
+    username: "leo_001",
     password: "123",
     categories: [
       {
@@ -21,7 +21,7 @@ export const users: UserType[] = [
     id: "user_002",
     name: "Maya",
     image: null,
-    username: "sudo_me",
+    username: "maya_002",
     password: "456",
     categories: [
             {
@@ -43,7 +43,7 @@ export const users: UserType[] = [
     id: "user_003",
     name: "Eva",
     image: null,
-    username: "git_lol",
+    username: "eva_003",
     password: "789",
     categories: [
             {
@@ -71,7 +71,7 @@ export const users: UserType[] = [
     id: "user_004",
     name: "Alex",
     image: null,
-    username: "code_bug",
+    username: "alex_004",
     password: "987",
     categories: [
             {

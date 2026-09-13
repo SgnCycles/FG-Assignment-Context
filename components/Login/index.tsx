@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <form className="flex flex-col h-full justify-evenly items-center">
-      <div className="h-full w-full flex flex-col justify-evenly items-center">
+      <div className="gap-10 xl:gap-0 min-h[70%] xl:h-full w-full flex flex-col justify-evenly items-center">
         <div className="input-container flex justify-center">
           <label htmlFor="username" className="label font-work-sans">
             Username:

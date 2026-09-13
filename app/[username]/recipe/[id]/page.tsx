@@ -8,7 +8,7 @@ const RecipePage = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const { id } = use(params);
   const { recipe, getRecipe } =
-    useFavouritesContext()! as FavouriteRecipeContextType;
+    useFavouritesContext() as FavouriteRecipeContextType;
 
   useEffect(() => {
     getRecipe(id);

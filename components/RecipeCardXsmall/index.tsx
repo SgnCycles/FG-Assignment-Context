@@ -10,7 +10,7 @@ const RecipeCardXSmall = ({ recipe }: { recipe: FullRecipeType }) => {
     <Link
       className="recipe-xsmall relative bg-contain bg-center bg-no-repeat w-card-xs h-card-xs border-4 border-primary rounded-full mr-2 mb-4 lg:mr-0 lg:mb-0"
       style={{ backgroundImage: `url(${recipe.strMealThumb})` }}
-      href={`/${user!.username}/recipe/${recipe.idMeal}`}
+      href={`/${user?.username}/recipe/${recipe.idMeal}`}
     >
       <svg
         className="absolute -inset-8.75 overflow-visible w-[calc(100%+70px)] h-[calc(100%+70px)]"

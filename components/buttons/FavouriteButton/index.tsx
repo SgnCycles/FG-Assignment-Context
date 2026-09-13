@@ -1,4 +1,4 @@
-import { RecipeCardType, FavouritesType } from "@/types/types";
+import { RecipeCardType, FavouritesType, FavouriteRecipeContextType } from "@/types/types";
 import { useFavouritesContext } from "@/context/favouriteRecipeContext";
 import { toast } from "react-toastify";
 
@@ -8,8 +8,9 @@ const FavouriteButton = ({
   strMealThumb,
   strCategory,
 }: RecipeCardType) => {
+  
   const { addToFavourites, removeFavourites, isFavourite } =
-    useFavouritesContext()!;
+    useFavouritesContext() as FavouriteRecipeContextType;
 
   const handleClick = () => {
     const recipe: FavouritesType = {

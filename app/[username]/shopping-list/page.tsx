@@ -8,12 +8,14 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const ShoppingListPage = () => {
+
   const { shoppingList, setShoppingList } =
-    useFavouritesContext()! as FavouriteRecipeContextType;
+    useFavouritesContext() as FavouriteRecipeContextType;
   const shoppingCardContainerRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
+      if (!shoppingCardContainerRef.current || !shoppingList.length) return;
       const tl = gsap.timeline({ delay: 0.5 });
       tl.fromTo(
         ".shopping-list-card",

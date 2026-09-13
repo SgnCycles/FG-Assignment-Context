@@ -156,7 +156,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .homepage-grid {
     grid-template-rows: 1fr 200px;
   }

@@ -82,7 +82,7 @@ const ShoppingListCard = ({ recipe }: { recipe: ShoppingListType }) => {
         <div className="flex justify-end pt-8 gap-8">
           <ActionButton
             name="Save"
-            title="Ingredient list Updated"
+            title="Ingredient List Updated"
             type="Success"
             onClickFunction={saveBoughtIngredients}
           />

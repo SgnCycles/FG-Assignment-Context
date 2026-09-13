@@ -55,7 +55,7 @@ const ProfilePage = () => {
 
   useGSAP(
     () => {
-      if (!user && !recipe) return;
+      if (!user || !recipe) return;
       const tl = gsap.timeline({ delay: 0.5 });
       tl.fromTo(
         ".user-heading",
