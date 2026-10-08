@@ -8,7 +8,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const FavouritesPage = () => {
-  
   const { favouriteRecipes, setFavouriteRecipes } =
     useFavouritesContext() as FavouriteRecipeContextType;
   const favouritesContainerRef = useRef<HTMLDivElement | null>(null);
@@ -60,7 +59,7 @@ const FavouritesPage = () => {
           <RecipeCardSmall {...recipe} key={recipe.idMeal} />
         ))}
       </div>
-      {favouriteRecipes.length > 0 && (
+      {favouriteRecipes.length > 0 ? (
         <div className="w-[90%] flex justify-end place-self-center button">
           <ActionButton
             name="Clear All"
@@ -68,6 +67,11 @@ const FavouritesPage = () => {
             type="Error"
             onClickFunction={handleClearClick}
           />
+        </div>
+      ) : (
+        <div className="w-[90%] flex flex-col text-lg justify-start items-start">
+          <p>No Favourites selected.</p>
+          <p>Explore the recipes and choose your favourites.</p>
         </div>
       )}
     </main>

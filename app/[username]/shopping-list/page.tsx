@@ -8,7 +8,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const ShoppingListPage = () => {
-
   const { shoppingList, setShoppingList } =
     useFavouritesContext() as FavouriteRecipeContextType;
   const shoppingCardContainerRef = useRef<HTMLDivElement | null>(null);
@@ -61,7 +60,7 @@ const ShoppingListPage = () => {
             <ShoppingListCard recipe={recipe} key={recipe.idMeal} />
           ))}
       </div>
-      {shoppingList.length > 0 && (
+      {shoppingList.length > 0 ? (
         <div className="w-[90%] flex justify-end button">
           <ActionButton
             name="Clear All"
@@ -69,6 +68,10 @@ const ShoppingListPage = () => {
             type="Error"
             onClickFunction={handleClearClick}
           />
+        </div>
+      ) : (
+        <div className="w-[90%] flex flex-col text-lg justify-start items-start">
+          <p>Shopping list is empty.</p>
         </div>
       )}
     </main>
