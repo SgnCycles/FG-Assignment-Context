@@ -8,7 +8,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const CategoriesPage = () => {
-  
   const { user } = useUserContext() as userContextType;
   const { favouriteCategories } =
     useFavouriteCategoryContext() as FavouriteCategoriesContextType;
@@ -34,10 +33,11 @@ const CategoriesPage = () => {
         },
       );
     },
-    { scope: categoryContainerRef,
+    {
+      scope: categoryContainerRef,
       dependencies: [favouriteCategories],
       revertOnUpdate: true,
-     },
+    },
   );
 
   return (
@@ -49,8 +49,15 @@ const CategoriesPage = () => {
       >
         {user &&
           favouriteCategories &&
-          favouriteCategories.map((category) => (
-            <CategoryCard key={category.idCategory} {...category} />
+          (favouriteCategories.length > 0 ? (
+            favouriteCategories.map((category) => (
+              <CategoryCard key={category.idCategory} {...category} />
+            ))
+          ) : (
+            <div className="flex flex-col text-lg pt-4">
+              <p>No categories selected.</p>
+              <p>Head to your profile and choose your favourites.</p>
+            </div>
           ))}
       </div>
     </main>
